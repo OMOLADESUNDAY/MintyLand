@@ -19,9 +19,9 @@ const Home = () => {
       </div>
       <article className="descovery">
         <div className="left">
-          <h2 className='discoverText'>Discover</h2>
+          <h2 className="discoverText">Discover</h2>
           <h3>Immerse Yourself In The Beautiful and Evolving Virtual Word</h3>
-          <h5>
+          <h5 className="immerseText">
             Discover LANDs owned by users & experience incredible scenes and
             structures
           </h5>
@@ -32,7 +32,7 @@ const Home = () => {
           </div>
         </div>
         <div className="right">
-          <div className='homeImageContainer'>
+          <div className="homeImageContainer">
             <img src={image1} alt="try" />
           </div>
         </div>
