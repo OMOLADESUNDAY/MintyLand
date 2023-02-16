@@ -1,0 +1,38 @@
+.signupSection{
+    width: 50%;
+    margin: auto;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:1px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    margin: 2rem;
+    outline: none;
+    font-size: 1.2rem;
+}
+.continue{
+    width: 40%;
+    margin: auto;
+    margin-bottom: 3rem;
+    border: none;
+}
+.accounttxt{
+    text-align: center;
+    margin: 1rem;
+}
+.log{
+    color: var(--color-primary);
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}

@@ -32,4 +32,15 @@
  .footerContainer{
     flex-direction: column;
  }
+ .leftFooter{
+    width: 100%;
+    margin: 1rem;
+    justify-content: center;
+ }
+ .rightFooter{
+    width: 100%;
+    margin: 1rem;
+    align-items: center;
+     justify-content: center;
+ }
 }
