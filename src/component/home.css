@@ -59,6 +59,9 @@
 .homeImageContainer{
     height: 50vh;
 }
+.discoverText{
+    color: var(--color-primary);
+}
 .getStarted{
     margin-top: 2rem;
     margin-bottom: 2rem;

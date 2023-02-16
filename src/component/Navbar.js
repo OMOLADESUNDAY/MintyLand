@@ -18,7 +18,10 @@ const Navbar = () => {
          return () => {
              window.removeEventListener("resize", checkSize);
         };
-    }
+  }
+  const changeNotification = () => {
+    setNotification(notification+1)
+  }
   return (
     <header className="header">
       <nav className={show ? "navbarchange navbar" : "navbar"}>
@@ -63,7 +66,7 @@ const Navbar = () => {
                     notification <= 0 ? "hidenotification" : "notificationCount"
                   }
                 >
-                  <p>{notification}</p>
+                  <p onClick={changeNotification}>{notification}</p>
                 </div>
                 <BiBell className="bell" />
               </Link>

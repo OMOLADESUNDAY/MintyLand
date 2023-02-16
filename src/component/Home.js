@@ -19,7 +19,7 @@ const Home = () => {
       </div>
       <article className="descovery">
         <div className="left">
-          <h2>Discover</h2>
+          <h2 className='discoverText'>Discover</h2>
           <h3>Immerse Yourself In The Beautiful and Evolving Virtual Word</h3>
           <h5>
             Discover LANDs owned by users & experience incredible scenes and
