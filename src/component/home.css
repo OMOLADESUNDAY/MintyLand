@@ -1,0 +1,101 @@
+.wrapper{
+    position: relative;
+    height: 87vh;
+   
+}
+.homeContainer{
+  color: var(--text-color);
+}
+.homeContainer::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/heroBg.png');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.4;
+    z-index: -1;
+    
+}
+.welcomeText{
+    line-height:2rem;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.mintyText{
+    line-height:4rem;
+    font-size: 4rem;
+    font-weight: 800;
+    position: relative;
+    color: #f401b8;
+    letter-spacing: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.buyText{
+      font-weight: 500;
+    word-spacing: 0.3rem;
+}
+.cover{
+    position: absolute;
+    left: 10%;
+    top: 40%;
+}
+.descovery{
+    display: flex;
+    align-items: flex-start;
+   margin: 1rem;
+}
+.left{
+    width: 50%;
+}
+.right{
+    width: 50%;
+}
+.homeImageContainer{
+    height: 50vh;
+}
+.getStarted{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+@media screen and (max-width:1024px) {
+    .cover{
+        left:15%
+    }
+    .mintyText{
+    line-height:2rem;
+    font-size: 3rem;
+    font-weight: 800;
+    position: relative;
+    color: #f401b8;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    }
+    .welcomeText{
+        line-height:1rem;
+        font-size: 2.5rem;
+    }
+}
+@media screen and (max-width:768px) {
+    .mintyText{
+        letter-spacing: 0;
+    }
+    .cover{
+        left: 15%;
+    }
+}
+@media screen and (max-width:600px) {
+     .cover{
+        left: 5%;
+        padding: 1rem;
+    }
+    .descovery{
+    flex-direction: column;
+}
+}
