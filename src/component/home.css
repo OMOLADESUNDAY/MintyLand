@@ -48,7 +48,7 @@
 .descovery{
     display: flex;
     align-items: flex-start;
-   margin: 1rem;
+   margin: 2rem;
 }
 .left{
     width: 50%;
@@ -57,17 +57,32 @@
     width: 50%;
 }
 .homeImageContainer{
+    padding: 1rem;
     height: 50vh;
 }
 .discoverText{
+    font-size: 3rem;
     color: var(--color-primary);
+    margin-bottom: 0.5rem;
 }
 .immerseText{
     color: var(--color-primary);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 .getStarted{
     margin-top: 2rem;
     margin-bottom: 2rem;
+    font-weight: 700;
+}
+.homeAboutContainer{
+    background-color: black;
+    /* background-color: var(--color-secondary); */
+    margin: 2rem;
+    padding: 2rem;
+}
+.homeAboutText{
+    color: rgba(173, 173, 168, 0.212);
 }
 @media screen and (max-width:1024px) {
     .cover{
@@ -106,13 +121,14 @@
     }
     .right{
         width: 100%;
+        margin: 1rem;
     }
     .left{
         width: 100%;
+        margin: 1rem;
     }
     .homeImageContainer{
         height: 40vh;
-
 }
 
 }
