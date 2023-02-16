@@ -18,6 +18,22 @@
     outline: none;
     font-size: 1.2rem;
 }
+.passdiv{
+    display: flex;
+}
+.password{
+    border: none;
+    width: 90%;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    background-color: transparent;
+     outline: none;
+}
+.eye{
+    width: 10%;
+    cursor: pointer;
+    color: green;
+}
 .continue{
     width: 40%;
     margin: auto;
