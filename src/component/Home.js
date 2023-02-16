@@ -62,7 +62,7 @@ const Home = () => {
         <h3 className='homeAboutText'>MintyLand allow you to buy and sell virtual assets and real estate</h3>
         <div className="getStarted">
           <Link className="btn " to="/about">
-            Get Started
+            Read More
           </Link>
         </div>
       </section>
