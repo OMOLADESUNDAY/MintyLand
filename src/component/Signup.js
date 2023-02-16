@@ -23,6 +23,7 @@ const Signup = () => {
        setPasswordError('')
        setConfirmPasswordError('')
        setUsernameError('')
+       setSuccess('')
      }, 2000);
      return () => {
        clearTimeout(removeTime);
@@ -120,8 +121,8 @@ const Signup = () => {
                 </Link>
               </span>
             </p>
+            <small className="success">{success}</small>
             <button className="btn continue">Continue</button>
-            <small className='success'>{success}</small>
           </form>
         </article>
       </section>
