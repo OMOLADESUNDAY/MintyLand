@@ -56,14 +56,17 @@ const Login = () => {
        let data = {
          ...details,
          email: email,
-        
          password: password,
         
        };
        
        console.log(data);
        await axios
-         .post("http://localhost:5000/api/v1/login", data)
+         .post("http://localhost:5000/api/v1/login", data, {
+           headers: {
+             "Content-Type": "application/json",
+           },
+         })
          .then(function (response) {
            console.log(response);
          })
@@ -72,7 +75,7 @@ const Login = () => {
          });
        setSuccess("success");
        removeErrorMessage();
-       e.target.reset();
+      //  e.target.reset();
      }
   };
   const showPasswordHandler = () => {
