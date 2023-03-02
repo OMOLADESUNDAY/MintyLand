@@ -1,8 +1,22 @@
 import React, { useRef,useState } from 'react'
+import { TiEye } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
+
 import './signup.css'
 const Signup = () => {
+  const [showpassword,setShowPassword]=useState('password')
+  const showPasswordHandler = () => {
+    let show = passwordRef.current.type
+    if (show === 'password') {
+      let newshow=setShowPassword('text')
+      show=newshow
+    }
+    else {
+      let newshow2=setShowPassword('password')
+      show=newshow2
+    }
+  }
   const details={username:'',email:'',password:'',confirmPassword:''}
   // const [username, setUsername] = useState('')
   // const [emal, setEmail] = useState('');
@@ -99,19 +113,27 @@ const Signup = () => {
               className="input"
             />
             <small className="error">{emailError}</small>
-            <input
-              ref={passwordRef}
-              type="password"
-              placeholder="Password"
-              className="input"
-            />
+            <div className="input passdiv">
+              <input
+                ref={passwordRef}
+                className="password"
+                type={showpassword}
+                placeholder="Password"
+              />
+                <TiEye className='eye' onClick={()=>showPasswordHandler()}/>
+              
+            </div>
             <small className="error">{passwordError}</small>
-            <input
-              ref={confirmPasswordRef}
-              type="password"
-              placeholder="Confirm Passord"
-              className="input"
-            />
+            <div className="input passdiv">
+              <input
+                ref={passwordRef}
+                className="password"
+                type={showpassword}
+                placeholder="Password"
+              />
+                <TiEye className='eye' onClick={()=>showPasswordHandler()}/>
+              
+            </div>
             <small className="error">{confirmPasswordError}</small>
             <p className="accounttxt">
               already have an account?{" "}

@@ -10,6 +10,8 @@ import Signup from './component/Signup';
 
 import { Route, Routes } from "react-router-dom";
 import Footer from './component/Footer';
+import Trending from './component/Trending';
+import LandAndEstate from './component/LandAndEstate';
 function App() {
   return (
     <div className="App">
@@ -22,6 +24,8 @@ function App() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/landandEstate" element={<LandAndEstate />} />
       </Routes>
       <Footer/>
     </div>

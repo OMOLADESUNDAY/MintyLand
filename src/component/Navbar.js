@@ -6,7 +6,7 @@ import './navbar.css';
 
 const Navbar = () => {
     const [show, setShow] = useState(false)
-    const [notification, setNotification] = useState(0);
+    const [notification, setNotification] = useState(1);
     const togglerHandler = () => {
        setShow(!show);
          const checkSize = window.addEventListener("resize", () => {

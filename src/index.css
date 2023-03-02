@@ -7,6 +7,7 @@
 }
 :root{
   --color-bg:#06060d;
+  --color-bg-variant:#e1e1ec56;
   --color-black:#000000;
   --text-color:#ffffff;
   --container-lg:85%;
