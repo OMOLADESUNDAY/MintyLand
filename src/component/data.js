@@ -84,11 +84,6 @@ export const API={
             {id:3,name:"olorioko kafata",image:c3,rarity:"common",volume:900,landSize:landsize},
             {id:4,name:"olorioko kafata",image:c4,rarity:"common",volume:900,landSize:landsize},
             {id:5,name:"olorioko kafata",image:c5,rarity:"common",volume:900,landSize:landsize},
-            {id:6,name:"olorioko kafata",image:c6,rarity:"common",volume:900,landSize:landsize},
-            {id:7,name:"olorioko kafata",image:c7,rarity:"common",volume:900,landSize:landsize},
-            {id:8,name:"olorioko kafata",image:c8,rarity:"common",volume:900,landSize:landsize},
-            {id:9,name:"olorioko kafata",image:c9,rarity:"common",volume:900,landSize:landsize},
-            {id:10,name:"olorioko kafata",image:c10,rarity:"common",volume:900,landSize:landsize}
             ]
 }
 export const TrendingData=[

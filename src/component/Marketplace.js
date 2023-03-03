@@ -116,7 +116,7 @@ const Marketplace = () => {
           {API.RecentSold.map((recentsold)=>{
             const {id,name,image,volume,rarity,landSize}=recentsold
             return(
-              <div key={id}>
+              <div key={id} className='soldcon'>
                 <div className='recentspread'>
                   <div className='recentNameAndImg'>
                   <div className='recentImage'><img alt={name} src={image}/></div>
