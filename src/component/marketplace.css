@@ -41,6 +41,7 @@
     border-left: none;
     border-right: none;
 }
+
 .dayall{
     padding: 1rem;
     border: 1px solid ;
@@ -62,6 +63,10 @@
     padding: 0.8rem;
     border-radius: 50%;
 }
+.changeres{
+    display: flex;
+    gap:1rem
+}
 /* ===============SALES CONTAINER STATS========= */
 .salesnum{
     display: flex;
@@ -70,7 +75,7 @@
 }
 /* ===============TRENDING CONTAINER ============ */
 .trendingContainer{
-    margin: 2rem;
+    margin: 1rem;
 }
 .trendText{
     display: flex;
@@ -78,22 +83,26 @@
 .trendwrap{
     display: flex;
     justify-content: space-between;
+    padding: 0 2rem ;
+    margin: 1rem 0;
 }
 .exploree{
     color: var(--color-primary);
 }
 .SwiperImageContainer{
-    width: 100%;
-    height: 50vh;
+    width: 90%;
+    height: 40vh;
     margin: 1rem;
     border: 0.5px solid;
     border-radius: 2rem;
 }
 .SwiperImageContainer img{
     border-radius: 2rem;
+   
 }
 .swipename{
     text-align: center;
+    margin: 1.5rem;
 }
 
 
@@ -103,17 +112,28 @@
     display: flex;
     gap: 2rem;
 }
+.recentTop h3{
+    font-size: 1rem;
+    font-weight: 200;
+}
 .recentSoldContainer{
-    padding: 2rem;
+    background-color: var(--color-secondary);
+    padding: 2rem ;
+    border-radius: 1rem;
 }
 .recentspread{
+    margin:1rem 0 ;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.recentImage{
-    width: 40px;
-    height: 40px;
+.recentspread h3{
+    font-size: 1rem;
+    font-weight: 200;
+}
+.recentSoldText{
+    font-size: 1.4rem;
+    padding: 2rem;
 }
 .recentNameAndImg{
     display: flex;
@@ -130,6 +150,10 @@
 .rare{
     width: 33%;
     text-align: center;
+    border: 1px solid;
+    border-radius: 1rem;
+    padding: 0.3rem 0.5rem;
+    width: fit-content;
 }
 .recentNameAndImg img{
     border-radius: 50%;
@@ -139,4 +163,58 @@
 }
 .soldcon{
     margin: 1rem 0;
+}
+.namee{
+    font-size: 1rem;
+}
+@media screen and (max-width:1024px) {
+    
+}
+@media screen and (max-width:768px) {
+    .marketVolumetopLeft h2{
+        font-size: 1.2rem;
+    }
+    .marketVolumetopLeft p{
+        font-size: 0.8rem;
+    }
+    .day30{
+        padding: 1rem;
+    }
+    .marketVolumetopbtm{
+        gap: 1rem;
+    }
+    .salesnum h2{
+        font-size: 1.2rem;
+    }
+    .namee{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width:600px) {
+    .marketVolumetop{
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: flex-start;
+    }
+    .trendingItemText{
+        font-size: 1.2rem;
+    }
+    .trendText{
+        font-size: 0.7rem;
+    }
+    .marketVolumetopbtm{
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .salesnum h2{
+        font-size: 1rem;
+    }
+    .namee{
+        font-size: 0.8rem;
+    }
+    .recentSoldContainer{
+        padding: 2 0.5rem;
+        width: 100%;
+    }
 }

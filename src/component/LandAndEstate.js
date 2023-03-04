@@ -6,6 +6,7 @@ const LandAndEstate = () => {
     <div>
         <Navbar/>
         LandAndEstate
+        
     </div>
   )
 }
