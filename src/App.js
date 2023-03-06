@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from './component/Footer';
 import Trending from './component/Trending';
 import LandAndEstate from './component/LandAndEstate';
+import ConnectWallet from './component/ConnectWallet';
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/landandEstate" element={<LandAndEstate />} />
+        <Route path="/connectwallet" element={<ConnectWallet />} />
       </Routes>
       <Footer/>
     </div>

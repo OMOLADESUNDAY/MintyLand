@@ -86,6 +86,14 @@ export const API={
             {id:5,name:"olorioko kafata",image:c5,rarity:"common",volume:900,landSize:landsize},
             ]
 }
+export const userAssetData=[
+    {id:1,name:"Olorioko kafata",image:c1,volume:302.2,totalNumber:5},
+    {id:2,name:"Alan grey",image:c5,volume:302.2,totalNumber:2},
+    {id:3,name:"Mr foster",image:c2,volume:302.2,totalNumber:3},
+    {id:4,name:"George may",image:c3,volume:302.2,totalNumber:4}
+]
+   
+    
 export const TrendingData=[
 {id:1,name:"olorioko kafata",image:c1},
 {id:2,name:"olorioko kafata",image:c2},
