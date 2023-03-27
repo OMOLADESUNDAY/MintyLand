@@ -1,10 +1,18 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navbar from './Navbar'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './signup.css'
 import { TiEye } from 'react-icons/ti';
 import axios from "axios";  
+import { useLocation } from 'react-router-dom';
+import { Store } from './store';
+import { toast } from 'react-toastify';
+import { getError } from './utils';
 const Login = () => {
+  const navigate=useNavigate()
+  const {search}=useLocation()
+  const redirctUrl=new URLSearchParams(search).get('redirect');
+  const redirect= redirctUrl ? redirctUrl:"/";
    const details = {
     
      email: "",
@@ -31,6 +39,8 @@ const Login = () => {
        clearTimeout(removeTime);
      };
    };
+   const {state,dispatch:ctxDispatch}=useContext(Store)
+   const {userInfo}=state
    const registerSubmitHandler = async(e) => {
      e.preventDefault();
     
@@ -59,23 +69,25 @@ const Login = () => {
          password: password,
         
        };
-       
-       console.log(data);
-       await axios
-         .post("http://localhost:5000/api/v1/login", data, {
+         await axios
+         .post("http://localhost:5000/api/login", data, {
            headers: {
              "Content-Type": "application/json",
            },
          })
          .then(function (response) {
-           console.log(response);
+          ctxDispatch({type:"USER_SIGNIN",payload:response.data})
+          localStorage.setItem('userInfo',JSON.stringify(response.data))
+          console.log(response.data)
+          setSuccess("success");
+          removeErrorMessage();
+          e.target.reset();    
+          navigate(redirect || '/') 
          })
          .catch(function (error) {
-           console.log(error);
+          toast.error(getError(error))
          });
-       setSuccess("success");
-       removeErrorMessage();
-      //  e.target.reset();
+      
      }
   };
   const showPasswordHandler = () => {
@@ -89,6 +101,11 @@ const Login = () => {
       show=newshow2
     }
   }
+  useEffect(()=>{
+    if(userInfo){
+      navigate(redirect)
+    }
+  },[navigate,redirect,userInfo])
   return (
     <div className="container">
       <Navbar />
@@ -119,7 +136,7 @@ const Login = () => {
             <p className="accounttxt">
               create an account?{" "}
               <span>
-                <Link to="/signup" className="log">
+                <Link to={`/signup?redirect=${redirect}`} className="log">
                   sign up
                 </Link>
               </span>

@@ -2,7 +2,10 @@ import React from 'react'
 import Navbar from './Navbar'
 import './assest.css'
 import { userAssetData } from './data'
+// import { useParams } from 'react-router-dom'
 const Assets = () => {
+  // const paras=useParams()
+  // const {}=paras
   return (
     <div>
       <Navbar/>

@@ -2,6 +2,7 @@ import React, { useRef,useState } from 'react'
 import { TiEye } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
+import axios from 'axios'
 
 import './signup.css'
 const Signup = () => {
@@ -17,7 +18,7 @@ const Signup = () => {
       show=newshow2
     }
   }
-  const details={username:'',email:'',password:'',confirmPassword:''}
+  const data={username:'',email:'',password:'',confirmPassword:''}
   // const [username, setUsername] = useState('')
   // const [emal, setEmail] = useState('');
   // const [password, setPassword] = useState('');
@@ -43,8 +44,9 @@ const Signup = () => {
        clearTimeout(removeTime);
      };
    };
-  const registerSubmitHandler = (e) => {
-    e.preventDefault()
+  const registerSubmitHandler = async(e) => {
+    console.log(e)
+    e.preventDefault();
     let username = usernameRef.current.value
     let email = emailRef.current.value
     let password = passwordRef.current.value
@@ -84,14 +86,22 @@ const Signup = () => {
       (password !== "") &&
       (confirmPassword !== "")
     ) {
-      let newDetails={ ...details, email:email, username:username, password:password, confirmPassword:confirmPassword }
-      console.log(newDetails)
+      let newdata={ ...data, email:email, username:username, password:password, confirmPassword:confirmPassword }
+      console.log(newdata)
+      axios.post('http://localhost:5000/api/register',newdata)
+      .then((response)=>{
+        console.log(response)
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
       setSuccess('success')
       removeErrorMessage()
       e.target.reset();
     }
 
   }
+ 
   return (
     <div className="container">
       <Navbar />
@@ -126,7 +136,7 @@ const Signup = () => {
             <small className="error">{passwordError}</small>
             <div className="input passdiv">
               <input
-                ref={passwordRef}
+                ref={confirmPasswordRef}
                 className="password"
                 type={showpassword}
                 placeholder="Password"

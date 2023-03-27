@@ -5,7 +5,7 @@ const Trending = () => {
   return (
     <div>
         <Navbar/>
-        Trending
+       
     </div>
   )
 }

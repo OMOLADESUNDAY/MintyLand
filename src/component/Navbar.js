@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import {Link} from 'react-router-dom'
 import { BiBell, BiMenu} from 'react-icons/bi'
 import {TiTimes} from 'react-icons/ti'
 import './navbar.css';
-
+import {Store} from './store'
 const Navbar = () => {
     const [show, setShow] = useState(false)
-    const [notification, setNotification] = useState(1);
     const togglerHandler = () => {
        setShow(!show);
          const checkSize = window.addEventListener("resize", () => {
@@ -19,8 +18,13 @@ const Navbar = () => {
              window.removeEventListener("resize", checkSize);
         };
   }
-  const changeNotification = () => {
-    setNotification(notification+1)
+ 
+  const {state,dispatch:ctxDispatch}=useContext(Store)
+  const {cart,userInfo}=state
+  console.log(state)
+  // console.log(userInfo)
+  const logoutHandler=()=>{
+    ctxDispatch({type:'USER_SIGNOUT'})
   }
   return (
     <header className="header">
@@ -44,14 +48,10 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/assets" onClick={() => setShow(false)}>
-                Assets
-              </Link>
-            </li>
-            <li>
-              <Link to="/events" onClick={() => setShow(false)}>
-                Events
-              </Link>
+            {userInfo ?<Link onClick={() => setShow(false)} to="/assets">
+              Assets
+              </Link>:<div></div>}
+             
             </li>
           </div>
           <div className="rightNavbar">
@@ -63,23 +63,30 @@ const Navbar = () => {
               >
                 <div
                   className={
-                    notification <= 0 ? "hidenotification" : "notificationCount"
+                  cart.cartItems.length <= 0 ? "hidenotification" : "notificationCount"
                   }
                 >
-                  <p onClick={changeNotification}>{notification}</p>
+                  <small >{cart.cartItems.reduce((a,c)=>a+c.quantity, 0)}</small>
                 </div>
                 <BiBell className="bell" />
               </Link>
             </li>
             <li>
-              <Link onClick={() => setShow(false)} to="/login">
+              {userInfo?<div className='logout' onClick={()=>logoutHandler()}>logout</div>:<Link onClick={() => setShow(false)} to="/login">
                 Login
-              </Link>
+              </Link>}
+              
+              
             </li>
             <li>
+              {userInfo ?
+                <div className='arrdownCon'>
+                  {userInfo.name}
+              </div>:
               <Link onClick={() => setShow(false)} to="/signup">
                 Signup
-              </Link>
+              </Link>}
+              
             </li>
           </div>
         </div>

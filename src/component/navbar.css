@@ -59,6 +59,13 @@
 .hidenotification{
     display: none;
 }
+.logout{
+    cursor: pointer;
+}
+.arrdownCon{
+    display: flex;
+    align-items: center;
+}
 @media screen and (max-width:1024px) {
     .leftNavbar{
         width: 45%;

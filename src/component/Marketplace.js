@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect,useReducer, useState } from 'react'
 import { BiBarChart} from 'react-icons/bi'
 import { TiTag } from 'react-icons/ti'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
-import {API} from './data'
 import { Pagination,Autoplay } from "swiper";
 import "./marketplace.css"
-
+import axios from 'axios'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -16,6 +15,75 @@ import "swiper/css/autoplay";
 
 const Explore='Explore >>'
 const Marketplace = () => {
+  const reducer=(state,action)=>{
+    switch (action.type) {
+      case 'FETCH_REQUEST':
+        return {...state,loading:true};
+      case 'FETCH_SUCCESS':
+        return {...state,product:action.payload,loading:false};
+      case 'FETCH_FAIL':
+          return {...state, loading:false, error:action.payload};  
+    
+      default:
+        break;
+    }
+  }
+  const [{loading,product,error}, dispatch]=useReducer((reducer),{loading:true,product:[],error:''})
+  // const [product,setProduct]=useState([]);
+  useEffect(()=>{
+    
+      const FetchData=async()=>{
+        dispatch({type:"FETCH_REQUEST"})
+        try {
+          const response=await axios.get('http://localhost:5000/api/trending');
+           
+          dispatch({type:"FETCH_SUCCESS",payload:response.data})
+        } catch (error) {
+          dispatch({type:"FETCH_FAIL",payload:error.message})
+        }
+      }
+      FetchData()  
+   
+    
+  },[])
+
+
+
+
+
+  const reducer3=(state,action)=>{
+    switch (action.type) {
+      case 'FETCH_REQUEST':
+        return {...state,loading3:true};
+      case 'FETCH_SUCCESS':
+        return {...state,product3:action.payload,loading3:false};
+      case 'FETCH_FAIL':
+          return {...state, loading3:false, error:action.payload};  
+    
+      default:
+        break;
+    }
+  }
+  const [{loading3,product3,error3}, dispatch3]=useReducer((reducer3),{loading3:true,product3:[],error3:''})
+  // const [product,setProduct]=useState([]);
+  useEffect(()=>{
+    
+      const FetchData=async()=>{
+        dispatch3({type:"FETCH_REQUEST"})
+        try {
+          const response=await axios.get('http://localhost:5000/api/recentlysold');
+           
+          dispatch3({type:"FETCH_SUCCESS",payload:response.data})
+        } catch (error) {
+          dispatch3({type:"FETCH_FAIL",payload:error.message})
+        }
+      }
+      FetchData()  
+   
+    
+  },[])
+
+
   const [slideShowLen,setSlideShowLen]=useState(2);
   const [size,setSize]=useState(window.innerWidth);
   const checksize=()=>{
@@ -24,7 +92,6 @@ const Marketplace = () => {
   useEffect(()=>{
     const dsize=window.addEventListener('resize',checksize);
     if(size <= 768){
-        console.log('hello')
         setSlideShowLen(1)
     }
     else{
@@ -34,6 +101,19 @@ const Marketplace = () => {
       window.removeEventListener('resize',dsize)
     }
   },[slideShowLen,size])
+  if (loading) {
+    return(
+      <div className='loading__center'>
+      <div className="ring"></div>
+      <span className="loading">Loading</span>
+    </div>
+    )
+  }
+  if (error) {
+    return(
+      <div>error</div>
+    )
+  }
   return (
     <section className='container'>
       <Navbar/>
@@ -84,10 +164,11 @@ const Marketplace = () => {
        pagination={{ clickable: true }}
        autoplay={{delay:3000}}
      >
-       {API.TrendingData.map((trendItem) => {
+       {product.map((trendItem) => {
          return (
-           <SwiperSlide key={trendItem.id} className="" >
-             <div className='SwiperImageContainer' style={{padding:0,margin:0,width:"100%"}}>
+           <SwiperSlide  key={trendItem._id} className="singleTrendingItem" >
+            <Link to={`/api/product/id/${trendItem._id}`}>
+            <div className='SwiperImageContainer' style={{padding:0,margin:0,width:"100%"}}>
                <img
                style={{width:"100%"}}
                  src={trendItem.image}
@@ -95,6 +176,8 @@ const Marketplace = () => {
                />
              </div>
              <h5 className="swipename">{trendItem.name}</h5>
+            </Link>
+             
            </SwiperSlide>
          );
        })}
@@ -115,10 +198,12 @@ const Marketplace = () => {
        pagination={{ clickable: true }}
        autoplay={{delay:5000}}
      >
-       {API.LandAndEstateData.map((landEstate) => {
+      
+       {product.map((landEstate) => {
          return (
-           <SwiperSlide key={landEstate.id} >
-             <div  className='SwiperImageContainer'>
+           <SwiperSlide key={landEstate._id} >
+            <Link to={`/api/product/id/${landEstate._id}`}>
+            <div  className='SwiperImageContainer'>
                <img
                  className=""
                  src={landEstate.image}
@@ -126,20 +211,23 @@ const Marketplace = () => {
                />
              </div>
              <h5 className="swipename">{landEstate.name}</h5>
+            </Link>
+            
            </SwiperSlide>
          );
        })}
      </Swiper>
        </article>
+       {loading3?<div>loading</div>:error3}
        <h2 className='recentSoldText'>Recently Sold</h2>
        <article className='recentSoldContainer'>
         <div className='recentTop'><h3>Land</h3><h3>Estate</h3><h3>Shares</h3></div>
         <div>
           <div className='recentspread'><h3>Assets</h3><h3>Rarity</h3><h3>Volume</h3></div>
-          {API.RecentSold.map((recentsold)=>{
-            const {id,name,image,volume,rarity,landSize}=recentsold
+          {product3.map((recentsold)=>{
+            const {_id,name,image,volume,rarity,landSize}=recentsold
             return(
-              <div key={id} className='soldcon'>
+              <div key={_id} className='soldcon'>
                 <div className='recentspread'>
                   <div className='recentNameAndImg'>
                   <div className='recentImage' style={{width:"30px",height:"30px"}}><img alt={name} src={image}/></div>
