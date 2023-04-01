@@ -70,7 +70,7 @@ const Login = () => {
         
        };
          await axios
-         .post("http://localhost:5000/api/login", data, {
+         .post("https://cloudy-toad-wig.cyclic.app/api/user/login", data, {
            headers: {
              "Content-Type": "application/json",
            },

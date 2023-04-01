@@ -16,6 +16,8 @@ import LandAndEstate from './component/LandAndEstate';
 import ConnectWallet from './component/ConnectWallet';
 import PageNotFound from './component/PageNotFound';
 import SingleAsset from './component/SingleAsset';
+import Admin from './component/Admin';
+import CryptoPayment from './component/CryptoPayment';
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
         <Route path="/landandEstate" element={<LandAndEstate />} />
         <Route path="/connectwallet" element={<ConnectWallet />} />
         <Route path="/api/product/id/:id" element={<SingleAsset />} />
-       
+       <Route path='/admin' element={<Admin/>}/>
+       <Route path='/cryptopayment' element={<CryptoPayment/>}/>
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer/>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect, useReducer } from 'react'
-// import './product.css'
+import './singleAsset.css'
 import { getError } from './utils'
 import axios from 'axios'
 import { Store } from './store';
@@ -32,7 +32,7 @@ const SingleAsset = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get(`http://localhost:5000/api/product/id/${id}`); 
+          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/id/${id}`); 
  
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
@@ -51,7 +51,7 @@ const SingleAsset = () => {
     const existItem=cart.cartItems.find((x)=>x._id===product._id)
     console.log(product);
     const quantity=existItem ? existItem.quantity+1: 1;
-    const data= await axios.get(`http://localhost:5000/api/product/${product._id}`)
+    const data= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${product._id}`)
     // const data2= await axios.get(`http://localhost:5000/api/landandestate/${product._id}`)
     // console.log(data);
     if(data.countInStock < quantity){
@@ -75,9 +75,10 @@ const SingleAsset = () => {
     )
   }
     return (
-    <section className='container singleProductContainer'>
+    <section className='container '>
       <Navbar/>
-        <div className='leftSingleProduct'>
+      <div className='singleProductContainer'>
+      <div className='leftSingleProduct'>
           <img src={product.image} alt={product.name} />
         </div>
         <div className='centerSingleProduct'>
@@ -94,6 +95,9 @@ const SingleAsset = () => {
             <hr/>
             <button onClick={AddToCartHandler} className='btn addtocartbtn'>add to cart</button>
         </div>
+
+      </div>
+        
     </section>
   )
 }

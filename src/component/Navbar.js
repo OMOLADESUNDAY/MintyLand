@@ -48,7 +48,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-            {userInfo ?<Link onClick={() => setShow(false)} to="/assets">
+            {userInfo && userInfo.name !== "Admin" ?<Link onClick={() => setShow(false)} to="/assets">
               Assets
               </Link>:<div></div>}
              
@@ -56,7 +56,7 @@ const Navbar = () => {
           </div>
           <div className="rightNavbar">
             <li>
-              <Link
+              {userInfo && userInfo.name==="Admin"?<Link to='/admin'>Dashboard</Link>:<Link
                 onClick={() => setShow(false)}
                 to="/notification"
                 className="notificationCountContainer"
@@ -69,7 +69,8 @@ const Navbar = () => {
                   <small >{cart.cartItems.reduce((a,c)=>a+c.quantity, 0)}</small>
                 </div>
                 <BiBell className="bell" />
-              </Link>
+              </Link>}
+              
             </li>
             <li>
               {userInfo?<div className='logout' onClick={()=>logoutHandler()}>logout</div>:<Link onClick={() => setShow(false)} to="/login">
@@ -79,9 +80,9 @@ const Navbar = () => {
               
             </li>
             <li>
-              {userInfo ?
+              {userInfo && userInfo.name ==="Admin"?
                 <div className='arrdownCon'>
-                  {userInfo.name}
+                  
               </div>:
               <Link onClick={() => setShow(false)} to="/signup">
                 Signup

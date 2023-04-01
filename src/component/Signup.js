@@ -1,11 +1,14 @@
 import React, { useRef,useState } from 'react'
 import { TiEye } from 'react-icons/ti';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar'
 import axios from 'axios'
 
 import './signup.css'
+import { toast } from 'react-toastify';
+import { getError } from './utils';
 const Signup = () => {
+  const navigate=useNavigate()
   const [showpassword,setShowPassword]=useState('password')
   const showPasswordHandler = () => {
     let show = passwordRef.current.type
@@ -88,15 +91,19 @@ const Signup = () => {
     ) {
       let newdata={ ...data, email:email, username:username, password:password, confirmPassword:confirmPassword }
       console.log(newdata)
-      axios.post('http://localhost:5000/api/register',newdata)
+      axios.post('https://cloudy-toad-wig.cyclic.app/api/user/signin',newdata)
       .then((response)=>{
         console.log(response)
+        setSuccess('success')
+        removeErrorMessage()
+        e.target.reset();    
+          navigate('/login') 
       })
       .catch((err)=>{
         console.log(err)
+        toast.error(getError(err))
       })
-      setSuccess('success')
-      removeErrorMessage()
+    
       e.target.reset();
     }
 

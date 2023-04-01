@@ -35,7 +35,7 @@ const Marketplace = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get('http://localhost:5000/api/trending');
+          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/trending');
            
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
@@ -55,7 +55,7 @@ const Marketplace = () => {
     switch (action.type) {
       case 'FETCH_REQUEST':
         return {...state,loading3:true};
-      case 'FETCH_SUCCESS':
+      case 'FETCH_SUCCESSS':
         return {...state,product3:action.payload,loading3:false};
       case 'FETCH_FAIL':
           return {...state, loading3:false, error:action.payload};  
@@ -65,15 +65,16 @@ const Marketplace = () => {
     }
   }
   const [{loading3,product3,error3}, dispatch3]=useReducer((reducer3),{loading3:true,product3:[],error3:''})
-  // const [product,setProduct]=useState([]);
+  
+  console.log(product3)
   useEffect(()=>{
     
       const FetchData=async()=>{
         dispatch3({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get('http://localhost:5000/api/recentlysold');
-           
-          dispatch3({type:"FETCH_SUCCESS",payload:response.data})
+          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
+           console.log(response.data);
+          dispatch3({type:"FETCH_SUCCESSS",payload:response.data})
         } catch (error) {
           dispatch3({type:"FETCH_FAIL",payload:error.message})
         }
@@ -115,7 +116,7 @@ const Marketplace = () => {
     )
   }
   return (
-    <section className='container'>
+    <section className='container bigMarketWrapper'>
       <Navbar/>
        <article className='overviewCon'>
           <h3 className='overview'>Overveiw</h3>
@@ -164,7 +165,7 @@ const Marketplace = () => {
        pagination={{ clickable: true }}
        autoplay={{delay:3000}}
      >
-       {product.map((trendItem) => {
+       {product.slice(5,10).map((trendItem) => {
          return (
            <SwiperSlide  key={trendItem._id} className="singleTrendingItem" >
             <Link to={`/api/product/id/${trendItem._id}`}>
@@ -199,7 +200,7 @@ const Marketplace = () => {
        autoplay={{delay:5000}}
      >
       
-       {product.map((landEstate) => {
+       {product.slice(0,5).map((landEstate) => {
          return (
            <SwiperSlide key={landEstate._id} >
             <Link to={`/api/product/id/${landEstate._id}`}>

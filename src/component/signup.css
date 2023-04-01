@@ -1,6 +1,7 @@
 .signupSection{
     width: 50%;
     margin: auto;
+    height: 85vh;
 }
 .form{
     display: flex;
