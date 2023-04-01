@@ -36,6 +36,7 @@ const CryptoPayment = () => {
 			value:  ethers.utils.parseEther(amount.toString())
 
 		});
+    console.log(transactionResponse)
     setTransaction('payment completed')
     navigate('/asset')
 	} catch (error) {
