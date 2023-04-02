@@ -35,8 +35,7 @@ const Marketplace = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/trending');
-           
+          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:error.message})
