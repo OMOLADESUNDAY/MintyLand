@@ -4,12 +4,16 @@ import { useNavigate } from 'react-router-dom'
 import './cryptopayment.css';
 import { Store } from './store';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { getError } from './utils';
 
 const CryptoPayment = () => {
  
   const {state}=useContext(Store);
   console.log(state)
+  const {userInfo,cart}=state
   const [ethPrice,setEthPrice]=useState()
+  const totalPrice=state.cart.cartItems.reduce((a,c)=>a+c.price * c.quantity,0)
   useEffect(()=>{
     
     const FetchData=async()=>{
@@ -23,8 +27,10 @@ const CryptoPayment = () => {
           if(element.id==='ethereum'){
             const currentDollar=(element.current_price)
             const totalPrice=state.cart.cartItems.reduce((a,c)=>a+c.price * c.quantity,0)
-            const ethPrice=totalPrice / currentDollar
+            const ethPricee=totalPrice / currentDollar
+            const ethPrice=Number(ethPricee.toFixed(18));
             setEthPrice(ethPrice)
+            console.log(ethPrice)
           }
          }
         } catch (error) {
@@ -56,8 +62,13 @@ const CryptoPayment = () => {
 		await  window.ethereum.send("eth_requestAccounts");
 
 		const  provider = new  ethers.providers.Web3Provider(window.ethereum);
-
-		const  signer = provider.getSigner();
+    const network = await provider.getNetwork();
+    // if (network.chainId !== 1) {
+    //   alert('Please switch to the Ethereum mainnet')
+    //   throw new Error('Please switch to the Ethereum mainnet');
+    // }
+    // else{
+      const  signer = provider.getSigner();
 
 		ethers.utils.getAddress(destinationAddress);
 
@@ -68,23 +79,61 @@ const CryptoPayment = () => {
 			value:  ethers.utils.parseEther(amount.toString())
 
 		});
-    console.log(transactionResponse)
-    setTransaction('payment completed')
+    if(transactionResponse){
+     
+      const transactiondata={userId:userInfo._id,totalPrice:totalPrice,ethPrice:ethPrice ,transactionResponse:transactionResponse,asset:cart.cartItems}
+     
+      try {
+        const response=await axios.post('http://localhost:5000/api/transaction',transactiondata)  
+        if(response){
+          const addToRecentSold=await axios.post('http://localhost:5000/api/recentlysold',{justSold:cart.cartItems})
+          if(addToRecentSold){
+            for (let index = 0; index < cart.cartItems.length; index++) {
+              const element = cart.cartItems[index];
+              // const dd={element}
+              await axios.delete(`http://localhost:5000/api/removeProduct/${element._id}`)
+              // await axios.post(`http://localhost:5000/api/removeProduct`,dd)
+            }
+          }
+          
+          if(true){
+            setTransaction('payment completed')
+            const removeErrorMessage = () => {
+              const removeTime = setTimeout(() => {
+                setTransactionError("");
+                setTransaction("");
+              }, 10000);
+              return () => {
+                clearTimeout(removeTime);
+              };
+            };
+            removeErrorMessage()
+            cart.cartItems.length=0
+            navigate(`/api/asset/user/${userInfo._id}`)
+            }
+          }
+      } catch (error) {
+        alert('there was an error')        
+      } 
+    }
+    // }
+		
+   
+    // usrid,product purchase,transaction response
+	} catch (error) {
+    toast.error(getError(error))
+    setTransactionError(error.message)
     const removeErrorMessage = () => {
       const removeTime = setTimeout(() => {
         setTransactionError("");
         setTransaction("");
-        navigate('/asset')
+        navigate('/notification')
       }, 2000);
       return () => {
         clearTimeout(removeTime);
       };
     };
     removeErrorMessage()
-	} catch (error) {
-    setTransactionError(error.message)
-		
-
 	}
     }
   return (

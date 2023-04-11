@@ -1,37 +1,135 @@
-import React from 'react'
+import React, { useContext, useEffect, useReducer, useRef, useState } from 'react'
 import Navbar from './Navbar'
 import './assest.css'
-import { userAssetData } from './data'
-// import { useParams } from 'react-router-dom'
-const Assets = () => {
-  // const paras=useParams()
-  // const {}=paras
-  return (
-    <div>
-      <Navbar/>
-      <section className='container assetContainer'>
-        {userAssetData.map((data)=>{
-          const {id,name,image,volume,totalNumber}=data
-          return(
-            <article key={id} className='singleAssetContainer'>
-            <div className='leftImageContainer'>
-            <img src={image} alt={name}/>
-          </div>
-          <div className='RightImageContainer'>
-            <small className='assetSmall'>Asset Name</small>
-            <div className='nametotal'><h2 className='assetName'>{name}</h2><h2 className='assetName'>{`+${totalNumber}`}</h2></div>
-            
-            <small className='assetSmall'>Total Volume</small>
-            <h3 className='volume'>{volume}</h3>
-            <button className='btn sellBtn'>sell</button>
-          </div>
-        </article>
-          )
-        })}
-        
-      </section>
-    </div>
-  )
+import axios from 'axios'
+import { Store } from './store'
+import { Link } from 'react-router-dom'
+
+
+
+function convertImageUrlToBase64(imageUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const dataURL = canvas.toDataURL('image/png');
+      resolve(dataURL);
+    };
+    img.onerror = error => reject(error);
+    img.src = imageUrl;
+  });
 }
+  
+const Assets = () => {
+  const [imageUrl, setImageUrl] = useState('https://res.cloudinary.com/dkzuuda7n/image/upload/v1680255027/x4nycckcho7ddiizktj9.png');
+  const [base64String, setBase64String] = useState('');
+  
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const base64String = await convertImageUrlToBase64(imageUrl);
+          setBase64String(base64String);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      fetchData();
+    }, [imageUrl]);
+
+    const {state}=useContext(Store)
+    const {userInfo}=state;
+    
+    const reducer=(state,action)=>{
+      switch (action.type) {
+        case 'FETCH_REQUEST':
+          return {...state,loading:true};
+        case 'FETCH_SUCCESS':
+          return {...state,asset:action.payload,loading:false};
+        case 'FETCH_FAIL':
+            return {...state, loading:false, error:action.payload};  
+      
+        default:
+          break;
+      }
+    }
+
+  
+  
+   
+    const [{loading,asset,error}, dispatch]=useReducer((reducer),{loading:true,asset:[],error:''})
+    useEffect(()=>{
+      
+      const FetchData=async()=>{
+        dispatch({type:"FETCH_REQUEST"})
+        try {
+          const response=await axios.get(`http://localhost:5000/api/asset/user/${userInfo._id}`)
+          // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/user/asset');
+          dispatch({type:"FETCH_SUCCESS",payload:response.data})
+          
+        
+        } catch (error) {
+          dispatch({type:"FETCH_FAIL",payload:error.message})
+        }
+      }
+      FetchData() 
+  },[userInfo._id])
+  
+  const [disableDownload,setDisableDownload]=useState(true)
+  const chechRef=useRef()
+  const downloadRef=useRef()
+  const handleDat=(image)=>{
+    const chech=chechRef.current.checked='checked';
+    if(chech){
+      setImageUrl(image)
+      setDisableDownload(false)
+    }
+  }
+  
+  if(loading){
+    return (
+      <div className='loading__center'>
+        <div className="ring"></div>
+        <span className="loading">Loading</span>
+    </div>
+    )
+  }
+  if(error){
+    return(<div>error:cannot fetch data</div>)
+  }
+
+    return (
+      <div>
+        <Navbar/>
+        <section className='container assetContainer'>
+          {asset.length === 0?<div> <p>you do not have an asset</p>
+          <Link to='/'>Go Shopping</Link> </div>:<div>{asset.map((data)=>{
+            const {_id,name,image,rating}=data
+            return(
+              <article key={_id} className='singleAssetContainer'>
+              <div className='leftImageContainer'>
+              <img src={image} alt={name}/>
+            </div>
+            <div className='RightImageContainer'>
+              <small className='assetSmall'>Asset Name</small>
+              <div className='nametotal'><h2 className='assetName'>{name}</h2><h2 className='assetName'>{`+${rating}`}</h2></div>
+              
+              <small className='assetSmall'>Total Volume</small>
+              <input  type="checkbox" ref={chechRef}  className='check' onClick={()=>handleDat(image)} />
+              <h3 className='volume'>{rating}</h3> 
+              <a href={`${base64String}`} ref={downloadRef} download  className={disableDownload ? 'btn sellBtn disableDownlaod' : 'btn sellBtn '} >Get Art</a>
+            </div>
+          </article>
+            )
+          })}</div>}
+          
+        </section>
+      </div>
+    )
+  }
 
 export default Assets

@@ -35,7 +35,8 @@ const Marketplace = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
+          // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
+          const response=await axios.get('http://localhost:5000/api/product');
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:error.message})
@@ -65,13 +66,14 @@ const Marketplace = () => {
   }
   const [{loading3,product3,error3}, dispatch3]=useReducer((reducer3),{loading3:true,product3:[],error3:''})
   
-  console.log(product3)
+ 
   useEffect(()=>{
     
       const FetchData=async()=>{
         dispatch3({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
+          // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
+          const response=await axios.get('http://localhost:5000/api/recentlysold');
            console.log(response.data);
           dispatch3({type:"FETCH_SUCCESSS",payload:response.data})
         } catch (error) {
@@ -224,7 +226,7 @@ const Marketplace = () => {
         <div className='recentTop'><h3>Land</h3><h3>Estate</h3><h3>Shares</h3></div>
         <div>
           <div className='recentspread'><h3>Assets</h3><h3>Rarity</h3><h3>Volume</h3></div>
-          {product3.map((recentsold)=>{
+          {product3.slice(-5).reverse().map((recentsold)=>{
             const {_id,name,image,volume,rarity,landSize}=recentsold
             return(
               <div key={_id} className='soldcon'>

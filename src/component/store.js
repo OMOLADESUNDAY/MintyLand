@@ -30,6 +30,7 @@ const reducer=(state,action)=>{
            
         }
         case "USER_SIGNOUT":return {...state, userInfo:null}
+        case "CLEAR_CART":return {...state, cart:null}
         default:
             return state
     }

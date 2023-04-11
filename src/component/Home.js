@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import './home.css'
 import { Link } from 'react-router-dom';
-import Image1 from '../image/f10.png'
+import Image1 from '../image/digital-2.png'
 const Home = () => {
   let image1=Image1
   return (

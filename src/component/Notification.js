@@ -15,7 +15,8 @@ const Notification = () => {
     ctxDispatch({type:"CART_REMOVE_ITEM",payload:item})
   }
   const updateCartHandler=async(item,quantity)=>{
-    const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
+    const {data}= await axios.get(`http://localhost:5000/api/product/${item._id}`)
+    // const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
     if(data.countInStock < quantity){
         window.alert('sorry. Product is out of stock')
         return;

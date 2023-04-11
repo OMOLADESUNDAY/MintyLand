@@ -91,7 +91,8 @@ const Signup = () => {
     ) {
       let newdata={ ...data, email:email, username:username, password:password, confirmPassword:confirmPassword }
       console.log(newdata)
-      axios.post('https://cloudy-toad-wig.cyclic.app/api/user/signin',newdata)
+      axios.post('http://localhost:5000/api/user/signin',newdata)
+      // axios.post('https://cloudy-toad-wig.cyclic.app/api/user/signin',newdata)
       .then((response)=>{
         console.log(response)
         setSuccess('success')

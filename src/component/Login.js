@@ -70,7 +70,8 @@ const Login = () => {
         
        };
          await axios
-         .post("https://cloudy-toad-wig.cyclic.app/api/user/login", data, {
+         axios.post('http://localhost:5000/api/user/login',data,{
+        //  .post("https://cloudy-toad-wig.cyclic.app/api/user/login", data, {
            headers: {
              "Content-Type": "application/json",
            },
@@ -82,7 +83,13 @@ const Login = () => {
           setSuccess("success");
           removeErrorMessage();
           e.target.reset();    
-          navigate(redirect || '/') 
+          if(response.data.name ==="Admin"){
+            navigate('/admin/createNewProduct')
+          }
+          else{
+            navigate(redirect || '/')
+          }
+           
          })
          .catch(function (error) {
           toast.error(getError(error))

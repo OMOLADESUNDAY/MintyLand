@@ -1,0 +1,12 @@
+.aboutSection{
+    min-height: 70vh;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.aboutH1{
+    text-align: center;
+    margin: 1rem;
+}
+.aboutText{
+    font-size: 1.2rem;
+}

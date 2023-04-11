@@ -16,8 +16,13 @@ import LandAndEstate from './component/LandAndEstate';
 import ConnectWallet from './component/ConnectWallet';
 import PageNotFound from './component/PageNotFound';
 import SingleAsset from './component/SingleAsset';
-import Admin from './component/Admin';
+import CreateNewProduct from './component/CreateNewProduct';
 import CryptoPayment from './component/CryptoPayment';
+import AllUsers from './component/AllUsers';
+import AllProducts from './component/AllProducts';
+import About from './component/About';
+import AdminProtectedRoute from './component/AdminProtectedRoute';
+import ProtectedRoute from './component/ProtectedRoute';
 
 function App() {
   return (
@@ -25,17 +30,20 @@ function App() {
       <ToastContainer style={{position:'absolute',bottom:'10px',right:'40%'}} limit={1}/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/assets" element={<Assets />} />
+        <Route path="/api/asset/user/:id" element={<ProtectedRoute><Assets /></ProtectedRoute>} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/landandEstate" element={<LandAndEstate />} />
-        <Route path="/connectwallet" element={<ConnectWallet />} />
+        <Route path="/connectwallet" element={<ProtectedRoute><ConnectWallet /></ProtectedRoute>} />
         <Route path="/api/product/id/:id" element={<SingleAsset />} />
-       <Route path='/admin' element={<Admin/>}/>
-       <Route path='/cryptopayment' element={<CryptoPayment/>}/>
+       <Route path='/admin/createNewProduct' element={<AdminProtectedRoute><CreateNewProduct/></AdminProtectedRoute> }/>
+       <Route path='/admin/allproducts' element={<AdminProtectedRoute><AllProducts/></AdminProtectedRoute>}/>
+       <Route path='/admin/allusers' element={<AdminProtectedRoute><AllUsers/></AdminProtectedRoute>}/>
+       <Route path='/cryptopayment' element={<ProtectedRoute><CryptoPayment/></ProtectedRoute>}/>
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer/>

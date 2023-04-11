@@ -21,10 +21,53 @@ const Navbar = () => {
  
   const {state,dispatch:ctxDispatch}=useContext(Store)
   const {cart,userInfo}=state
-  console.log(state)
-  // console.log(userInfo)
   const logoutHandler=()=>{
     ctxDispatch({type:'USER_SIGNOUT'})
+  }
+  if (userInfo && userInfo.name === "Admin"){
+    return(
+      <header className="header">
+      <nav className={show ? "navbarchange navbar" : "navbar"}>
+        <div
+          className={show ? "togglerContainerChange" : "togglerContainer"}
+          onClick={togglerHandler}
+        >
+          {show ? <TiTimes /> : <BiMenu />}
+        </div>
+        <div className={show ? "show navlistContainer" : "navlistContainer"}>
+          <div className="leftNavbar">
+            <li>
+              <Link to="/admin/createNewProduct" onClick={() => setShow(false)}>
+                CreateProduct
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/allproducts" onClick={() => setShow(false)}>
+                Veiw All Product
+              </Link>
+            </li>
+            
+          </div>
+          <div className="rightNavbar">
+            <li>
+              <Link
+                onClick={() => setShow(false)}
+                to="/admin/allusers"
+                className="notificationCountContainer"
+              >Users</Link>
+              
+            </li>
+            <li>
+              <div className='logout' onClick={()=>logoutHandler()}>logout</div>
+            </li>
+            <li>
+              <div>{userInfo.name}</div>
+            </li>
+          </div>
+        </div>
+      </nav>
+    </header>  
+    )
   }
   return (
     <header className="header">
@@ -48,7 +91,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-            {userInfo && userInfo.name !== "Admin" ?<Link onClick={() => setShow(false)} to="/assets">
+            {userInfo && userInfo.name !== "Admin" ?<Link onClick={() => setShow(false)} to="/api/asset/user/:id">
               Assets
               </Link>:<div></div>}
              
@@ -80,13 +123,11 @@ const Navbar = () => {
               
             </li>
             <li>
-              {userInfo && userInfo.name ==="Admin"?
-                <div className='arrdownCon'>
-                  
-              </div>:
+              {userInfo ? <div>{userInfo.name}</div>:
               <Link onClick={() => setShow(false)} to="/signup">
                 Signup
-              </Link>}
+              </Link>
+             }
               
             </li>
           </div>
