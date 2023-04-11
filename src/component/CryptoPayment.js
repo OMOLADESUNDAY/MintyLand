@@ -62,7 +62,7 @@ const CryptoPayment = () => {
 		await  window.ethereum.send("eth_requestAccounts");
 
 		const  provider = new  ethers.providers.Web3Provider(window.ethereum);
-    const network = await provider.getNetwork();
+    // const network = await provider.getNetwork();
     // if (network.chainId !== 1) {
     //   alert('Please switch to the Ethereum mainnet')
     //   throw new Error('Please switch to the Ethereum mainnet');
