@@ -69,6 +69,7 @@
 @media screen and (max-width:768px) {
     .shoppingContainer{
         flex-direction: column;
+        gap: 3rem;
     }
     .leftShopping{
         width: 100%;

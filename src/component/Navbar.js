@@ -32,7 +32,7 @@ const Navbar = () => {
           className={show ? "togglerContainerChange" : "togglerContainer"}
           onClick={togglerHandler}
         >
-          {show ? <TiTimes /> : <BiMenu />}
+          {show ? <TiTimes style={{fontSize:"2rem"}}/> : <BiMenu style={{fontSize:"2rem"}} />}
         </div>
         <div className={show ? "show navlistContainer" : "navlistContainer"}>
           <div className="leftNavbar">
@@ -76,7 +76,7 @@ const Navbar = () => {
           className={show ? "togglerContainerChange" : "togglerContainer"}
           onClick={togglerHandler}
         >
-          {show ? <TiTimes /> : <BiMenu />}
+          {show ? <TiTimes style={{fontSize:"2rem"}} /> : <BiMenu style={{fontSize:"2rem"}} />}
         </div>
         <div className={show ? "show navlistContainer" : "navlistContainer"}>
           <div className="leftNavbar">
