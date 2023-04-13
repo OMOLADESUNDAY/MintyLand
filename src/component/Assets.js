@@ -68,7 +68,7 @@ const Assets = () => {
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get(`http://localhost:5000/api/asset/user/${userInfo._id}`)
-          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/user/${userInfo._id}`);
+          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/asset/user/${userInfo._id}`);
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
           
         
