@@ -80,7 +80,7 @@ if(loading){
 }
 if(error){
   return(
-    <div>There was an error</div>
+    <div style={{minHeight:"70vh"}}>There was an error</div>
   )
 }
   return (

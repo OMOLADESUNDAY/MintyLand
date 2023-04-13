@@ -144,7 +144,7 @@ const Marketplace = () => {
   }
   if (error) {
     return(
-      <div>error</div>
+      <div style={{minHeight:"75vh"}}>error</div>
     )
   }
   return (

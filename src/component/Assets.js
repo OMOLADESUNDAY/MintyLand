@@ -89,7 +89,7 @@ const Assets = () => {
       setDisableDownload(false)
     }
   }
-  
+  console.log(asset)
   if(loading){
     return (
       <div className='loading__center'>
@@ -99,7 +99,7 @@ const Assets = () => {
     )
   }
   if(error){
-    return(<div>error:cannot fetch data</div>)
+    return(<div style={{minHeight:"75vh"}}>error:cannot fetch data</div>)
   }
 
     return (
@@ -107,7 +107,7 @@ const Assets = () => {
         <Navbar/>
         <section className=' assetContainer'>
           {asset.length === 0?<div> <h2 style={{margin:"2rem 0"}}>Sorry you do not have an asset</h2>
-          <Link to='/product' className='btn'>Go Shopping{'>>>'}</Link> </div>:<div>{asset.map((data)=>{
+          <Link to='/product' className='btn'>Go Shopping{'>>>'}</Link> </div>:<div>{ asset.map((data)=>{
             const {_id,name,image,rating}=data
             return(
               <article key={_id} className='singleAssetContainer'>
