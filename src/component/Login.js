@@ -70,7 +70,7 @@ const Login = () => {
         
        };
          await axios
-         axios.post('http://localhost:5000/api/user/login',data,{
+         axios.post('https://cloudy-toad-wig.cyclic.app/api/user/login',data,{
         //  .post("https://cloudy-toad-wig.cyclic.app/api/user/login", data, {
            headers: {
              "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const Login = () => {
               </span>
             </p>
             <p>
-              <Link className="log">forgotten password?</Link>
+              <Link className="log" to='/forgotpassword'>forgotten password?</Link>
             </p>
             <small className="success">{success}</small>
             <button className="btn continue">Continue</button>

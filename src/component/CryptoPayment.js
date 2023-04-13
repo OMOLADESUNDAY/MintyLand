@@ -44,7 +44,7 @@ const CryptoPayment = () => {
 
 
  
-  const destinationAddress="0x538642a5f4554a6f42381760f0b51e4203812a82"
+  const destinationAddress="0x278e109a6c4a2affcce691147e6b6ac05c602676"
   const navigate=useNavigate()
  
     const [transactionError,setTransactionError]=useState('')
@@ -55,7 +55,8 @@ const CryptoPayment = () => {
     try {
 
 	if (!window.ethereum) {
-    alert('No crypto wallet found. Please install the metamask browser ')
+    // alert('No crypto wallet found. Please install the metamask browser ')
+    // toast.error('No crypto wallet found. Please install the metamask browser')
 		throw  new  Error("No crypto wallet found. Please install it.");
 	}
 
@@ -80,18 +81,18 @@ const CryptoPayment = () => {
 
 		});
     if(transactionResponse){
-     
+      
       const transactiondata={userId:userInfo._id,totalPrice:totalPrice,ethPrice:ethPrice ,transactionResponse:transactionResponse,asset:cart.cartItems}
      
       try {
-        const response=await axios.post('http://localhost:5000/api/transaction',transactiondata)  
+        const response=await axios.post('https://cloudy-toad-wig.cyclic.app/api/transaction',transactiondata)  
         if(response){
-          const addToRecentSold=await axios.post('http://localhost:5000/api/recentlysold',{justSold:cart.cartItems})
+          const addToRecentSold=await axios.post('https://cloudy-toad-wig.cyclic.app/api/recentlysold',{justSold:cart.cartItems})
           if(addToRecentSold){
             for (let index = 0; index < cart.cartItems.length; index++) {
               const element = cart.cartItems[index];
               // const dd={element}
-              await axios.delete(`http://localhost:5000/api/removeProduct/${element._id}`)
+              await axios.delete(`https://cloudy-toad-wig.cyclic.app/api/removeProduct/${element._id}`)
               // await axios.post(`http://localhost:5000/api/removeProduct`,dd)
             }
           }
@@ -117,7 +118,6 @@ const CryptoPayment = () => {
       } 
     }
     // }
-		
    
     // usrid,product purchase,transaction response
 	} catch (error) {

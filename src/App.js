@@ -23,6 +23,9 @@ import AllProducts from './component/AllProducts';
 import About from './component/About';
 import AdminProtectedRoute from './component/AdminProtectedRoute';
 import ProtectedRoute from './component/ProtectedRoute';
+import ForgotPassword from './component/ForgotPassword';
+import UpdatePassword from './component/UpdatePassword';
+import Products from './component/Products';
 
 function App() {
   return (
@@ -45,6 +48,10 @@ function App() {
        <Route path='/admin/allusers' element={<AdminProtectedRoute><AllUsers/></AdminProtectedRoute>}/>
        <Route path='/cryptopayment' element={<ProtectedRoute><CryptoPayment/></ProtectedRoute>}/>
         <Route path="/*" element={<PageNotFound />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/api/resetpassword/:token" element={<UpdatePassword />} />
+        <Route path="/product" element={<Products />} />
+        
       </Routes>
       <Footer/>
     </div>

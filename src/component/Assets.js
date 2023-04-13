@@ -67,8 +67,8 @@ const Assets = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          const response=await axios.get(`http://localhost:5000/api/asset/user/${userInfo._id}`)
-          // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/user/asset');
+          // const response=await axios.get(`http://localhost:5000/api/asset/user/${userInfo._id}`)
+          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/user/${userInfo._id}`);
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
           
         
@@ -103,11 +103,11 @@ const Assets = () => {
   }
 
     return (
-      <div>
+      <div className='container'>
         <Navbar/>
-        <section className='container assetContainer'>
-          {asset.length === 0?<div> <p>you do not have an asset</p>
-          <Link to='/'>Go Shopping</Link> </div>:<div>{asset.map((data)=>{
+        <section className=' assetContainer'>
+          {asset.length === 0?<div> <h2 style={{margin:"2rem 0"}}>Sorry you do not have an asset</h2>
+          <Link to='/product' className='btn'>Go Shopping{'>>>'}</Link> </div>:<div>{asset.map((data)=>{
             const {_id,name,image,rating}=data
             return(
               <article key={_id} className='singleAssetContainer'>

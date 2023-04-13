@@ -12,6 +12,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { toast } from 'react-toastify'
+import { getError } from './utils'
 
 const Explore='Explore >>'
 const Marketplace = () => {
@@ -36,7 +38,7 @@ const Marketplace = () => {
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
-          const response=await axios.get('http://localhost:5000/api/product');
+          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:error.message})
@@ -73,8 +75,7 @@ const Marketplace = () => {
         dispatch3({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
-          const response=await axios.get('http://localhost:5000/api/recentlysold');
-           console.log(response.data);
+          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
           dispatch3({type:"FETCH_SUCCESSS",payload:response.data})
         } catch (error) {
           dispatch3({type:"FETCH_FAIL",payload:error.message})
@@ -103,6 +104,36 @@ const Marketplace = () => {
       window.removeEventListener('resize',dsize)
     }
   },[slideShowLen,size])
+
+
+  const [total,setTotal]=useState([0])
+  const [totalSales,setToTalSales]=useState(0)
+
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try {
+        const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/admin/allusers`)
+        const {data}=response
+        if(data){
+         
+         
+          let aa=[]
+          for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            // console.log(element.assets.asset.length)
+            aa.push(element.assets.asset.length)
+            // let to =+  element.assets.asset.length
+            setTotal(aa)
+          }
+          const sales= total.reduce((a,c)=>a+c)
+          setToTalSales(sales)
+        }
+      } catch (error) {
+        toast.error(getError(error))
+       }
+    }
+    fetchData()
+  },[total])
   if (loading) {
     return(
       <div className='loading__center'>
@@ -120,8 +151,8 @@ const Marketplace = () => {
     <section className='container bigMarketWrapper'>
       <Navbar/>
        <article className='overviewCon'>
-          <h3 className='overview'>Overveiw</h3>
-          <h3><Link to='/assets'>My Assets</Link></h3>
+          <h3 className='overview'> <Link to='/marketplace'>Overveiw</Link> </h3>
+          <h3><Link to='/api/asset/user/:id'>My Assets</Link></h3>
        </article>
        <article className='marketVolume'>
         <div className='marketVolumetop'>
@@ -136,7 +167,7 @@ const Marketplace = () => {
         <div className='marketVolumetopbtm'>
           <div className='changeres'><div className='iconCon'><TiTag/></div>
           <div><h5>TOTAL SALES</h5>
-            <div className='salesnum'><h2>1.50k</h2><div><p>215/day</p></div></div>
+            <div className='salesnum'><h2>{totalSales}</h2><div><p>/{Math.floor(totalSales/2)}days</p></div></div>
           </div></div>
           <div className='changeres'>
           <div className='iconCon'><BiBarChart/></div>
@@ -155,7 +186,7 @@ const Marketplace = () => {
         <div className='trendText'><p>Best Selling Item over the last 24h&#128293;</p></div>
         
         </div>
-        <Link className='exploree' to='/trending'>{Explore}</Link>
+        <Link className='exploree' to='/marketplace'>{Explore}</Link>
         </div>
         <Swiper
       
@@ -188,7 +219,7 @@ const Marketplace = () => {
        <article>
         <div className='trendwrap'>
         <h2>Land and Estate</h2>
-        <Link className='exploree' to='/landandEstate'>{Explore}</Link>
+        <Link className='exploree' to='/product'>{Explore}</Link>
         </div>
        
         <Swiper

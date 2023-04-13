@@ -122,8 +122,9 @@
      formData.append('description', description);
      formData.append('price', price);
      formData.append('countInStock', countInStock);
-    //  axios.post('https://cloudy-toad-wig.cyclic.app/api/admin/createnewproduct',formData)
-      axios.post('http://localhost:5000/api/admin/createnewproduct',formData)
+     
+      // axios.post('http://localhost:5000/api/admin/createnewproduct',formData)
+      axios.post('https://cloudy-toad-wig.cyclic.app/api/admin/createnewproduct',formData)
       .then((response)=>{
         console.log(response)
         setSuccess('success')

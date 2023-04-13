@@ -33,7 +33,7 @@ const SingleAsset = () => {
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/id/${id}`);
-          const response=await axios.get(`http://localhost:5000/api/product/id/${id}`); 
+          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/id/${id}`); 
  
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
@@ -53,7 +53,7 @@ const SingleAsset = () => {
     console.log(product);
     const quantity=existItem ? existItem.quantity+1: 1;
     // const data= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${product._id}`)
-    const data= await axios.get(`http://localhost:5000/api/product/${product._id}`)
+    const data= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${product._id}`)
     // console.log(data);
     if(data.countInStock < quantity){
       window.alert('sorry. Product is out of stock')

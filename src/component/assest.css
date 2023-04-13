@@ -1,5 +1,6 @@
 .assetContainer{
     margin-top: 2rem;
+    min-height: 70vh;
 }
 .leftImageContainer{
     width: 40%;
@@ -8,10 +9,12 @@
 .singleAssetContainer{
     display: flex;
     gap:4rem;
+    margin: auto;  
     margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin: auto;   
+    margin-bottom: 2rem; 
     width: 80%;
+    border:0.5px solid var(--color-bg-variant);
+    border-radius: 10px;
 }
 .sellBtn{
     padding: 0.8rem 2rem;

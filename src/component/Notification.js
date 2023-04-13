@@ -15,7 +15,7 @@ const Notification = () => {
     ctxDispatch({type:"CART_REMOVE_ITEM",payload:item})
   }
   const updateCartHandler=async(item,quantity)=>{
-    const {data}= await axios.get(`http://localhost:5000/api/product/${item._id}`)
+    const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
     // const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
     if(data.countInStock < quantity){
         window.alert('sorry. Product is out of stock')
@@ -30,7 +30,7 @@ const Notification = () => {
   return (
     <div>
        <Navbar/>
-        <h1>Shopping Cart</h1>
+        <h1 className="accounttxt">Shopping Cart</h1>
         {cartItems.length < 1 ?
                 <div>Cart is empty <Link to='/'>Go shopping</Link></div>
                 :
@@ -44,9 +44,9 @@ const Notification = () => {
                             <p className='itemName'><Link to={`/api/product/id/${item._id}`}>{item.name}</Link> </p>
                         </div>
                         <div className="changeQuantityContainer">
-                            <button disabled={item.quantity===1} onClick={()=>updateCartHandler(item,item.quantity - 1)}><BiMinus className='pointer minus' /></button>
+                            <button className='dbtn' disabled={item.quantity===1} onClick={()=>updateCartHandler(item,item.quantity - 1)}><BiMinus className='pointer minus' /></button>
                             {item.quantity}
-                            <button disabled={item.quantity >= item.countInStock} onClick={()=>updateCartHandler(item,item.quantity + 1)}><BiPlus className='pointer plus'/></button>
+                            <button className='dbtn' disabled={item.quantity >= item.countInStock} onClick={()=>updateCartHandler(item,item.quantity + 1)}><BiPlus className='pointer plus'/></button>
                             
                         </div>
                         <div className="price">price: ${item.price}</div>

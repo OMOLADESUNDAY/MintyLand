@@ -6,7 +6,7 @@ const AdminProtectedRoute = ({children}) => {
     const {state}=useContext(Store)
     const {userInfo}=state
   return (
-    <div>{userInfo && userInfo.name==="Admin" ? children:<Navigate to='/login'/>}</div>
+    <div>{userInfo && userInfo.isAdmin === true ? children:<Navigate to='/login'/>}</div>
   )
 }
 

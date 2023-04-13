@@ -12,7 +12,9 @@ const AllProducts = () => {
   useEffect(()=>{
     const fetchData=async()=>{
       try {
-        const response=await axios.get(`http://localhost:5000/api/admin/allproducts`)
+        
+        const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/admin/allproducts`)
+        // const response=await axios.get(`http://localhost:5000/api/admin/allproducts`)
         const {data}=response
         console.log(data)
         if(data){
@@ -26,7 +28,9 @@ const AllProducts = () => {
     fetchData()
   },[])
   const deleteProductHandler=async(id)=>{
-   const response= await axios.delete(`http://localhost:5000/api/admin/delete/${id}`)
+    const response= await axios.delete(`https://cloudy-toad-wig.cyclic.app/api/admin/delete/${id}`)
+    
+  //  const response= await axios.delete(`http://localhost:5000/api/admin/delete/${id}`)
     const {data}=response
     if(data){
       const newProduct=product.filter((item)=>item._id !== id)

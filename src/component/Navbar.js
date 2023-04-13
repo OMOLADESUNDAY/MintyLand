@@ -24,7 +24,7 @@ const Navbar = () => {
   const logoutHandler=()=>{
     ctxDispatch({type:'USER_SIGNOUT'})
   }
-  if (userInfo && userInfo.name === "Admin"){
+  if (userInfo && userInfo.isAdmin === true){
     return(
       <header className="header">
       <nav className={show ? "navbarchange navbar" : "navbar"}>

@@ -3,6 +3,7 @@
     gap: 1rem;
     width: 80%;
     margin: auto;
+    min-height: 70vh;
 }
 
 .leftShopping{
@@ -63,4 +64,23 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+@media screen and (max-width:768px) {
+    .shoppingContainer{
+        flex-direction: column;
+    }
+    .leftShopping{
+        width: 100%;
+    }
+    .rightShopping{
+        width: 80%;
+    }
+
+}
+@media screen and (max-width:600px) {
+    
+    .dbtn{
+        width: 15px;
+    }
 }
