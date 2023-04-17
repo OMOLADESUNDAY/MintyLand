@@ -1,11 +1,10 @@
-
 .navbar{
     display: flex;
     justify-content: space-between;
     padding: 1rem;
     background-color: var(--color-black);
     color: var(--text-color);
-    margin: 1rem;
+    margin: 1rem 0;
     position:sticky;
     position: relative;
     transition: var(--transition);
@@ -78,6 +77,9 @@
     }
 }
 @media screen and (max-width:768px) {
+    .navbar{
+        background-color: transparent;
+    }
     .navlistContainer{
         display: none;
         transition: var(--transition);
