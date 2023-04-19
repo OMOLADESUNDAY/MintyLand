@@ -4,6 +4,7 @@ import './assest.css'
 import axios from 'axios'
 import { Store } from './store'
 import { Link } from 'react-router-dom'
+import { SERVERMACHINE } from './envconfig'
 
 
 
@@ -68,7 +69,7 @@ const Assets = () => {
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get(`http://localhost:5000/api/asset/user/${userInfo._id}`)
-          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/asset/user/${userInfo._id}`);
+          const response=await axios.get(`${SERVERMACHINE}/api/asset/user/${userInfo._id}`);
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
           
         
@@ -108,11 +109,11 @@ const Assets = () => {
         <section className=' assetContainer'>
           {asset.length === 0?<div> <h2 style={{margin:"2rem 0"}}>Sorry you do not have an asset</h2>
           <Link to='/product' className='btn'>Go Shopping{'>>>'}</Link> </div>:<div>{ asset.map((data)=>{
-            const {_id,name,image,rating}=data
+            const {_id,name,image,rating,no_of_review}=data
             return(
               <article key={_id} className='singleAssetContainer'>
               <div className='leftImageContainer'>
-              <img src={image} alt={name}/>
+              <img src={image} alt={name}/>  
             </div>
             <div className='RightImageContainer'>
               <small className='assetSmall'>Asset Name</small>
@@ -120,7 +121,7 @@ const Assets = () => {
               
               <small className='assetSmall'>Total Volume</small>
               <input  type="checkbox" ref={chechRef}  className='check' onClick={()=>handleDat(image)} />
-              <h3 className='volume'>{rating}</h3> 
+              <h3 className='volume'>{no_of_review}</h3> 
               <a href={`${base64String}`} ref={downloadRef} download  className={disableDownload ? 'btn sellBtn disableDownlaod' : 'btn sellBtn '} >Get Art</a>
             </div>
           </article>

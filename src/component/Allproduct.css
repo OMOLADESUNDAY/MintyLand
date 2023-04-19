@@ -14,3 +14,14 @@
     width: 50px;
     height: fit-content;
 }
+.adp{
+    width: 25%;
+}
+@media screen and (max-width:600px) {
+    .mail{
+        width: fit-content;
+    }
+    .asst{
+        width: fit-content;
+    }
+}

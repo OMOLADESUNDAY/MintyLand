@@ -117,10 +117,10 @@
 }
 .recentTop h3{
     font-size: 1rem;
-    font-weight: 200;
+    font-weight: 500;
 }
 .recentSoldContainer{
-    background-color: var(--color-secondary);
+    background-color: rgb(15,10,22);
     padding: 2rem ;
     border-radius: 1rem;
 }
@@ -133,6 +133,7 @@
 .recentspread h3{
     font-size: 1rem;
     font-weight: 200;
+    
 }
 .recentSoldText{
     font-size: 1.4rem;
@@ -154,15 +155,16 @@
     width: 33%;
     text-align: center;
     border: 1px solid;
-    border-radius: 1rem;
+    border-radius: 10px;
     padding: 0.3rem 0.5rem;
     width: fit-content;
+    font-weight: 700;
 }
 .recentNameAndImg img{
     border-radius: 50%;
 }
 .recentNameAndImg h2{
-    color: var(--color-primary);
+    color: var(--color-pink);
 }
 .soldcon{
     margin: 1rem 0;

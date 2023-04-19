@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +15,7 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('https://cloudy-toad-wig.cyclic.app/api/forgotpassword', { email });
+      const response = await axios.post(`${SERVERMACHINE}/api/forgotpassword`, { email });
       const {data}=response
       console.log(data)
     //   setSuccessMessage(response.data.message);

@@ -7,6 +7,11 @@ import axios from 'axios'
 import { Store } from './store';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import Frame1 from "../image/Frame 1.jpg"
+import Frame2 from "../image/Frame 2.jpg"
+import Frame3 from "../image/Frame 3.jpg"
+import { SERVERMACHINE } from './envconfig';
+
 const reducer=(state,action)=>{
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -21,20 +26,25 @@ const reducer=(state,action)=>{
   }
 }
 
+
 const SingleAsset = () => {
   const navigate=useNavigate()
     const para =useParams();
     const { id } =para;
     const [{loading,product,error}, dispatch]=useReducer((reducer),{loading:true,product:[],error:''})
   // const [product,setProduct]=useState([]);
+  const randomNumber = Math.floor(Math.random() * 2) + 1
+  const frames=[Frame1,Frame2,Frame3]
+  const dimag=frames[randomNumber]
+ 
   useEffect(()=>{
     
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/id/${id}`);
-          const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/id/${id}`); 
- 
+          const response=await axios.get(`${SERVERMACHINE}/api/product/id/${id}`); 
+           
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:getError(error)})
@@ -53,7 +63,7 @@ const SingleAsset = () => {
     console.log(product);
     const quantity=existItem ? existItem.quantity+1: 1;
     // const data= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${product._id}`)
-    const data= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${product._id}`)
+    const data= await axios.get(`${SERVERMACHINE}/api/product/${product._id}`)
     // console.log(data);
     if(data.countInStock < quantity){
       window.alert('sorry. Product is out of stock')
@@ -72,7 +82,7 @@ const SingleAsset = () => {
   }
   if (error){
     return(
-      <div>{error}</div>
+      <div style={{minHeight:"70vh"}}>{error}</div>
     )
   }
     return (
@@ -80,23 +90,26 @@ const SingleAsset = () => {
       <Navbar/>
       <div className='singleProductContainer'>
       <div className='leftSingleProduct'>
-          <img src={product.image} alt={product.name} />
+          <img src={dimag} alt={product.name} />
         </div>
         <div className='centerSingleProduct'>
+            <h3 className='blur'> Asset Name</h3>
             <h1>{product.name}</h1>
-            <hr/>
-            <p>price: ${product.price}</p>
-            <hr/>
+           <h3 className='blur'>total volume</h3>
+           <h1>203.3</h1>
             <p>description: {product.description}</p>
         </div>
         <div className='rightSingleProduct'>
-            <p>price: ${product.price}</p>
-            <hr/>
+          <div className='downdown'>
+          <p>price: ${product.price}</p>
             <p>Status: <small className={product.countInStock > 0 ? 'available':'outofstock'}>{product.countInStock > 0 ? 'InStock':'outofstock'}</small></p>
-            <hr/>
-            <button onClick={AddToCartHandler} className='btn addtocartbtn'>add to cart</button>
+          </div>
+          
+            
         </div>
-
+        <div className='lowerdown'>
+          <button onClick={AddToCartHandler} className='btn addtocartbtn'>Buy</button>
+          </div>
       </div>
         
     </section>

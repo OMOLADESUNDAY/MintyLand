@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { getError } from './utils'
 import "./Allproduct.css"
 import Navbar from './Navbar'
+import { SERVERMACHINE } from './envconfig'
 
 const AllUsers = () => {
   const [loading,setloading]=useState(true)
@@ -15,7 +16,7 @@ const AllUsers = () => {
   useEffect(()=>{
     const fetchData=async()=>{
       try {
-        const response =await axios.get(`https://cloudy-toad-wig.cyclic.app/api/allusers`)
+        const response =await axios.get(`${SERVERMACHINE}/api/admin/allusers`)
         // const response=await axios.get(`http://localhost:5000/api/admin/allusers`)
         const {data}=response
         if(data){
@@ -40,7 +41,7 @@ const AllUsers = () => {
   },[total])
   
   const deleteProductHandler=async(id)=>{
-   const response= await axios.delete(`http://localhost:5000/api/admin/deleteuser/${id}`)
+   const response= await axios.delete(`${SERVERMACHINE}/api/admin/deleteuser/${id}`)
     const {data}=response
     if(data){
       const newProduct=user.filter((item)=>item._id !== id)
@@ -64,14 +65,18 @@ const AllUsers = () => {
         {user.map((singleProduct)=>{
         const {name,_id,email,assets}=singleProduct
         return(
+          <div>
           <section key={_id} className='bottomContainer'>
-            <p style={{width:"25%"}}>{name}</p>
-            <p style={{width:"25%"}}>{email}</p>
-            <p style={{width:"25%"}}>{assets.asset.length}</p>
+            <p  className='adp'>{name}</p>
+            <p  className='adp mail'>{email}</p>
+            <p  className='adp asst'>{assets.asset.length}</p>
             <TiTrash onClick={()=>deleteProductHandler(_id)} style={{cursor:"pointer"}}/>
           </section>
+          <hr />
+          </div>
         )
       })}
+      
     </div>
     </div>
     

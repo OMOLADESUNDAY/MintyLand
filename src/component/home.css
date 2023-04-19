@@ -203,6 +203,7 @@
     }
     .homeImageContainer{
         height: 40vh;
+        display: none;
 }
 .welcomeText{
     line-height:1rem;

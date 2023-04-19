@@ -4,8 +4,10 @@
         import axios from 'axios'
         
         import './signup.css'
+        import './createnewproduct.css'
         import { toast } from 'react-toastify';
         import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
         const CreateNewProduct = () => {
           const navigate=useNavigate()
           
@@ -124,7 +126,7 @@
      formData.append('countInStock', countInStock);
      
       // axios.post('http://localhost:5000/api/admin/createnewproduct',formData)
-      axios.post('https://cloudy-toad-wig.cyclic.app/api/admin/createnewproduct',formData)
+      axios.post(`${SERVERMACHINE}/api/admin/createnewproduct`,formData)
       .then((response)=>{
         console.log(response)
         setSuccess('success')
@@ -146,77 +148,78 @@
                 
                 <article >
                   <form  onSubmit={registerSubmitHandler} >
-                    <div style={{display:'flex'}}>
-                    <div style={{width:'50%'}}>
+                    <div className='formCont'>
+                    <div  className='formlf'>
                   <input
                       ref={nameRef}
                       type="text"
-                      placeholder="Product Name"
-                      className="input"
+                      placeholder="Asset Name"
+                      className="input adinput"
                       style={{width:'88%'}}
                     />
                     <small className="error">{nameError}</small>
                     <input
                       ref={no_of_reviewRef}
                       type="number"
-                      placeholder="no of reviews"
-                      className="input"
+                      placeholder="Asset Volume"
+                      className="input adinput"
                       style={{width:'88%'}}
                     />
                     <small className="error">{no_of_reviewError}</small>
-                    <div className="input passdiv">
                       <input
                         ref={countInStockRef}
-                        className="password"
+                        className="input adinput"
                         type='number'
                         placeholder="number of item in stock"
                         
                       />
-                    </div>
                     <small className="error">{countInStoreError}</small>
-                    <div className="input passdiv">
                       <input
                         ref={descriptionRef}
-                        className="password"
+                        className="input adinput"
                         type='text'
                         placeholder="description"
                       />
-                    </div>
                     <small className="error">{descriptionError}</small>
                   </div>
-                  <div  style={{width:'50%'}}>
+                  <div className='formlf'>
                   <input
                       ref={ratingRef}
                       type="number"
                       placeholder="rating"
-                      className="input"
+                      className="input adinput"
                       style={{width:'88%'}}
                     />
                     <small className="error">{ratingError}</small>
-                    <div className="input passdiv">
                       <input
                         ref={categoryRef}
-                        className="password"
+                        className="input adinput"
                         type='text'
                         placeholder="category"
                       />
-                    </div>
                     <small className="error">{categoryError}</small>
-                    <div className="input passdiv">
                       <input
                         ref={priceRef}
-                        className="password"
+                        className="input adinput"
                         type='number'
                         placeholder="price"
                       />
-                    </div>
                     <small className="error">{priceError}</small>
+                    <div style={{border:"solid",textAlign:"center",cursor:"pointer"}} className='input adinput'>
                     <input
                       ref={imageRef}
                       type="file"
                       placeholder="image"
-                      className="input"
+                      className="input adinput"
+                      style={{display:"none"}}
+                      id='file'
                     />
+                    <label htmlFor="file"
+                    className="label"
+                    >
+                      Asset image
+                    </label>
+                    </div>
                     
                     <small className="error">{imageError}</small>
                   </div>

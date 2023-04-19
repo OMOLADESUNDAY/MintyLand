@@ -5,7 +5,7 @@ import { BiMinus, BiPlus, BiTrash } from 'react-icons/bi';
 import axios from 'axios';
 import Navbar from './Navbar';
 import './notification.css'
-
+import { SERVERMACHINE } from './envconfig';
 const Notification = () => {
   const {state,dispatch:ctxDispatch}=useContext(Store);
   const {cart:{cartItems}}=state
@@ -15,7 +15,7 @@ const Notification = () => {
     ctxDispatch({type:"CART_REMOVE_ITEM",payload:item})
   }
   const updateCartHandler=async(item,quantity)=>{
-    const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
+    const {data}= await axios.get(`${SERVERMACHINE}/api/product/${item._id}`)
     // const {data}= await axios.get(`https://cloudy-toad-wig.cyclic.app/api/product/${item._id}`)
     if(data.countInStock < quantity){
         window.alert('sorry. Product is out of stock')
@@ -32,7 +32,7 @@ const Notification = () => {
        <Navbar/>
         <h1 className="accounttxt">Shopping Cart</h1>
         {cartItems.length < 1 ?
-                <div>Cart is empty <Link to='/'>Go shopping</Link></div>
+                <div style={{minHeight:"75vh"}}>Cart is empty <Link to='/'>Go shopping</Link></div>
                 :
                 <section className='shoppingContainer'>
                 <article className="leftShopping">
@@ -63,7 +63,7 @@ const Notification = () => {
                         <h2>Total</h2><p>{leftbracket}{cartItems.reduce((a,c)=>a+c.quantity,0)} items{rightbracket}</p>
                     </div>
                     <h3>price:${cartItems.reduce((a,c)=>a+c.price * c.quantity,0)}</h3>
-                    <button className='btn' disabled={cartItems.quantity===0} onClick={checkoutHandler}>proceed to Checkout</button>
+                    <button className='btn proceed' disabled={cartItems.quantity===0} onClick={checkoutHandler}>proceed to Checkout</button>
                     
                 </article>
             </section>

@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 import { Pagination,Autoplay } from "swiper";
 import "./marketplace.css"
 import axios from 'axios'
-
+import { SERVERMACHINE } from './envconfig';
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -37,8 +37,8 @@ const Marketplace = () => {
       const FetchData=async()=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
-          // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
+          // const response=await axios.get('http://localhost:5000/api/product');
+          const response=await axios.get(`${SERVERMACHINE}/api/product`);
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:error.message})
@@ -75,7 +75,7 @@ const Marketplace = () => {
         dispatch3({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/recentlysold');
+          const response=await axios.get(`${SERVERMACHINE}/api/recentlysold`);
           dispatch3({type:"FETCH_SUCCESSS",payload:response.data})
         } catch (error) {
           dispatch3({type:"FETCH_FAIL",payload:error.message})
@@ -106,26 +106,24 @@ const Marketplace = () => {
   },[slideShowLen,size])
 
 
-  const [total,setTotal]=useState([0])
+  // const [total,setTotal]=useState([0])
   const [totalSales,setToTalSales]=useState(0)
-
+  // const [duser,setDuser]=useState({})
   useEffect(()=>{
     const fetchData=async()=>{
       try {
-        const response=await axios.get(`https://cloudy-toad-wig.cyclic.app/api/admin/allusers`)
+        const response=await axios.get(`${SERVERMACHINE}/api/admin/allusers`)
+        // const response=await axios.get(`http://localhost:5000/api/admin/allusers`)
         const {data}=response
         if(data){
-         
-         
           let aa=[]
+          // setDuser(data)
           for (let index = 0; index < data.length; index++) {
             const element = data[index];
-            // console.log(element.assets.asset.length)
             aa.push(element.assets.asset.length)
-            // let to =+  element.assets.asset.length
-            setTotal(aa)
           }
-          const sales= total.reduce((a,c)=>a+c)
+         
+          const sales= aa.reduce((a,c)=>a+c)
           setToTalSales(sales)
         }
       } catch (error) {
@@ -133,7 +131,9 @@ const Marketplace = () => {
        }
     }
     fetchData()
-  },[total])
+  })
+ 
+
   if (loading) {
     return(
       <div className='loading__center'>

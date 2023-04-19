@@ -4,13 +4,15 @@
     width: 80%;
     margin: auto;
     min-height: 70vh;
+    flex-direction: column;
+    align-items: center;
 }
 
 .leftShopping{
     width: 65%;
     justify-content: space-between;
     align-items: center;
-    border:0.5px solid;
+    /* border:0.5px solid; */
     padding: 1rem 0.5rem;
     border-radius: 0.5rem;
     height: fit-content;
@@ -21,9 +23,8 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    border:0.5px solid;
+    border-bottom:0.5px solid;
     padding: 0 0.5rem;
-    border-radius: 0.5rem;
     max-height: 70px;
 }
 .cartItemNameAndImage{
@@ -57,13 +58,23 @@
     border:0.5px solid;
     padding: 1rem;
     border-radius: 0.5rem;
-    text-align: left;
+    text-align: center;
     height: fit-content;
+    background-color:  rgb(30,11,56);
+    
+}
+.proceed{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .totalTextContainer{
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width:768px) {

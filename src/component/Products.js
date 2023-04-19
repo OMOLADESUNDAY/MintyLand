@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import "./products.css"
 import Navbar from "./Navbar";
+import { SERVERMACHINE } from "./envconfig";
 const Products = () => {
   // sample product data
 //   const products = [
@@ -40,7 +41,7 @@ const reducer=(state,action)=>{
         dispatch({type:"FETCH_REQUEST"})
         try {
           // const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
-          const response=await axios.get('https://cloudy-toad-wig.cyclic.app/api/product');
+          const response=await axios.get(`${SERVERMACHINE}/api/product`);
           dispatch({type:"FETCH_SUCCESS",payload:response.data})
         } catch (error) {
           dispatch({type:"FETCH_FAIL",payload:error.message})

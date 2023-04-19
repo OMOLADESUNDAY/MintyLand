@@ -5,6 +5,10 @@
 .leftImageContainer{
     width: 40%;
     height: 100%;
+    border-radius: 10px;
+}
+.leftImageContainer img{
+    border-radius: 10px;
 }
 .singleAssetContainer{
     display: flex;
@@ -13,7 +17,7 @@
     margin-top: 2rem;
     margin-bottom: 2rem; 
     width: 80%;
-    border:0.5px solid var(--color-bg-variant);
+    /* border:0.5px solid var(--color-bg-variant); */
     border-radius: 10px;
     padding-bottom: 2rem;
 }
@@ -56,11 +60,14 @@
         font-size: 1rem;
     }
     .volume{
-        margin: 0.5rem 0;
+        margin: 1rem 0;
+        border-radius: solid;
     }
 }
 @media screen and (max-width:768px) {
-   
+   .sellBtn{
+    margin-top: 4rem;
+   }
 }
 @media screen and (max-width:600px) {
    
@@ -92,7 +99,7 @@
     font-size: 1.2rem;
 }
 .volume{
-    margin: 0.5rem 0;
+    margin: 1.5rem 0;
 }
 
 

@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { Store } from './store';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
 const Login = () => {
   const navigate=useNavigate()
   const {search}=useLocation()
@@ -70,7 +71,7 @@ const Login = () => {
         
        };
          await axios
-         axios.post('https://cloudy-toad-wig.cyclic.app/api/user/login',data,{
+         axios.post(`${SERVERMACHINE}/api/user/login`,data,{
         //  .post("https://cloudy-toad-wig.cyclic.app/api/user/login", data, {
            headers: {
              "Content-Type": "application/json",
@@ -117,7 +118,7 @@ const Login = () => {
     <div className="container">
       <Navbar />
       <section className="signupSection">
-        <h2 className="accounttxt">Create an Account</h2>
+        <h2 className="accounttxt">Login</h2>
         <article>
           <form className="form" onSubmit={registerSubmitHandler}>
             <input

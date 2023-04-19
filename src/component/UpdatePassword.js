@@ -7,6 +7,7 @@ import axios from 'axios'
 import './signup.css'
 import { toast } from 'react-toastify';
 import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
 const UpdatePassword = () => {
     const para =useParams();
     const { token } =para;
@@ -74,7 +75,7 @@ const UpdatePassword = () => {
     ) {
       let newdata={ ...data, password:password, confirmPassword:confirmPassword }
       console.log(newdata)
-      axios.patch(`https://cloudy-toad-wig.cyclic.app/api/resetpassword/${token}`,newdata)
+      axios.patch(`${SERVERMACHINE}/api/resetpassword/${token}`,newdata)
       // axios.post('https://cloudy-toad-wig.cyclic.app/api/resetpassword',newdata)
       .then((response)=>{
         console.log(response)

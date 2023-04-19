@@ -6,6 +6,7 @@ import { Store } from './store';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
 
 const CryptoPayment = () => {
  
@@ -85,14 +86,14 @@ const CryptoPayment = () => {
       const transactiondata={userId:userInfo._id,totalPrice:totalPrice,ethPrice:ethPrice ,transactionResponse:transactionResponse,asset:cart.cartItems}
      
       try {
-        const response=await axios.post('https://cloudy-toad-wig.cyclic.app/api/transaction',transactiondata)  
+        const response=await axios.post(`${SERVERMACHINE}/api/transaction`,transactiondata)  
         if(response){
-          const addToRecentSold=await axios.post('https://cloudy-toad-wig.cyclic.app/api/recentlysold',{justSold:cart.cartItems})
+          const addToRecentSold=await axios.post(`${SERVERMACHINE}/api/recentlysold`,{justSold:cart.cartItems})
           if(addToRecentSold){
             for (let index = 0; index < cart.cartItems.length; index++) {
               const element = cart.cartItems[index];
               // const dd={element}
-              await axios.delete(`https://cloudy-toad-wig.cyclic.app/api/removeProduct/${element._id}`)
+              await axios.delete(`${SERVERMACHINE}/api/removeProduct/${element._id}`)
               // await axios.post(`http://localhost:5000/api/removeProduct`,dd)
             }
           }

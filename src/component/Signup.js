@@ -7,6 +7,7 @@ import axios from 'axios'
 import './signup.css'
 import { toast } from 'react-toastify';
 import { getError } from './utils';
+import { SERVERMACHINE } from './envconfig';
 const Signup = () => {
   const navigate=useNavigate()
   const [showpassword,setShowPassword]=useState('password')
@@ -91,7 +92,7 @@ const Signup = () => {
     ) {
       let newdata={ ...data, email:email, username:username, password:password, confirmPassword:confirmPassword }
       console.log(newdata)
-      axios.post('https://cloudy-toad-wig.cyclic.app/api/user/signin',newdata)
+      axios.post(`${SERVERMACHINE}/api/user/signin`,newdata)
       // axios.post('https://cloudy-toad-wig.cyclic.app/api/user/signin',newdata)
       .then((response)=>{
         console.log(response)
