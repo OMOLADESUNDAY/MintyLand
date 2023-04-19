@@ -99,7 +99,7 @@ const UpdatePassword = () => {
       <Navbar />
       <section className="signupSection">
         <h2 className="accounttxt">Create an Account</h2>
-        <article>
+        <article className='coverArt'>
           <form className="form" onSubmit={registerSubmitHandler}>
             <div className="input passdiv">
               <input

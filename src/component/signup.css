@@ -3,6 +3,10 @@
     margin: auto;
     min-height: 80vh;
 }
+.coverArt{
+    margin-top: 4rem;
+   
+}
 .form{
     display: flex;
     flex-direction: column;

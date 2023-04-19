@@ -116,7 +116,7 @@ const Signup = () => {
       <Navbar />
       <section className="signupSection">
         <h2 className="accounttxt">Create an Account</h2>
-        <article>
+        <article className='coverArt'>
           <form className="form" onSubmit={registerSubmitHandler}>
             <input
               ref={usernameRef}

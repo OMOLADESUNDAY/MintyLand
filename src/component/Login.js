@@ -119,7 +119,7 @@ const Login = () => {
       <Navbar />
       <section className="signupSection">
         <h2 className="accounttxt">Login</h2>
-        <article>
+        <article className='coverArt'>
           <form className="form" onSubmit={registerSubmitHandler}>
             <input
               ref={emailRef}
