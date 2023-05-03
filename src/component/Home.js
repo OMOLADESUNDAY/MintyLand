@@ -16,10 +16,10 @@ const Home = () => {
                   
             <h2 className="welcomeText">Welcome To</h2>
               
-              <div style={{display:"flex", width:"fit-content",height:"80px" , alignItems:"flex-end"}}>
+              <div style={{display:"flex", height:"80px" , alignItems:"flex-end"}} className="tests">
                
                 <h1 className="mintyText colorful-text">MintyLand </h1>
-              <div class="box-container" style={{margin:"-2rem"}}>
+              <div class="box-container">
                 <div class="box box1"></div>
                 <div class="box box2"></div>
             </div>  

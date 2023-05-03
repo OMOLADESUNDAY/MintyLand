@@ -45,10 +45,13 @@
     position: absolute;
     left: 10%;
     top: 40%;
+    /* border: solid; */
+    width: 80%;
 }
-
-
-
+.tests{
+    /* border: solid; */
+    width: 100px;
+}
 
 .containerr {
     display: flex;
@@ -63,10 +66,10 @@
 
 
 .box-container {
-    
     position: relative;
     width:200px;
     height: 200px;
+    margin:-2rem;
 }
   
   .box {
@@ -89,9 +92,6 @@
     left: 60px;
     z-index: 2;
   }
-
-
-
 
 .descovery{
     display: flex;
@@ -185,6 +185,10 @@
     }
 }
 @media screen and (max-width:600px) {
+   .tests{
+    /* border: solid; */
+    width: 100%;
+   }
     .box{
         width: 35px;
         height: 80px;
@@ -192,6 +196,7 @@
      .cover{
         left: 3%;
         padding: 1rem;
+        /* border: solid; */
     }
     .descovery{
     flex-direction: column;
@@ -220,41 +225,18 @@
     font-weight: 800;
     padding-bottom: 0.5rem;
 }
-
+.buyText{
+    font-weight: 500;
+  word-spacing: 0.1rem;
+  font-size: 20px;
 }
-
-/* @media screen and (max-width:600px) {
-    .cover{
-       left: 3%;
-       padding: 1rem;
-   }
-   .descovery{
-   flex-direction: column;
-   padding-top: 2rem;
-   }
-   .right{
-       width: 100%;
-       
-   }
-   .left{
-       width: 100%;
-       
-   }
-   .homeImageContainer{
-       height: 40vh;
-       display: none;
 }
-.welcomeText{
-   line-height:1rem;
-   font-size: 2rem;
-   font-weight: 300;
+@media screen and (max-width:350px) {
+    .mintyText{
+        font-size: 2rem;
+    }
+    .box-container{
+        margin: -1rem;
+        bottom: -3rem;
+    }
 }
-.mintyText{
-   line-height:2rem;
-   font-size: 4.0rem;
-   font-weight: 800;
-   padding-bottom: 0.5rem;
-}
-
-}
- */
