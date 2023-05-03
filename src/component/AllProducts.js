@@ -54,8 +54,8 @@ const AllProducts = () => {
         {product.map((singleProduct)=>{
         const {name,_id,image,category}=singleProduct
         return(
-          <div>
-          <section key={_id} className='bottomContainer'>
+          <div  key={_id}>
+          <section  className='bottomContainer'>
             <img className='ProImg'   src={image} alt={name} />
             <p  style={{width:"25%"}}>{name}</p>
             <p  style={{width:"25%"}}>{category}</p>
