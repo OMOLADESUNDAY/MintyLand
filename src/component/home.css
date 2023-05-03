@@ -185,6 +185,10 @@
     }
 }
 @media screen and (max-width:600px) {
+    .box{
+        width: 35px;
+        height: 80px;
+    }
      .cover{
         left: 3%;
         padding: 1rem;
@@ -212,10 +216,45 @@
 }
 .mintyText{
     line-height:2rem;
-    font-size: 4.0rem;
+    font-size: 3.0rem;
     font-weight: 800;
     padding-bottom: 0.5rem;
 }
 
 }
 
+/* @media screen and (max-width:600px) {
+    .cover{
+       left: 3%;
+       padding: 1rem;
+   }
+   .descovery{
+   flex-direction: column;
+   padding-top: 2rem;
+   }
+   .right{
+       width: 100%;
+       
+   }
+   .left{
+       width: 100%;
+       
+   }
+   .homeImageContainer{
+       height: 40vh;
+       display: none;
+}
+.welcomeText{
+   line-height:1rem;
+   font-size: 2rem;
+   font-weight: 300;
+}
+.mintyText{
+   line-height:2rem;
+   font-size: 4.0rem;
+   font-weight: 800;
+   padding-bottom: 0.5rem;
+}
+
+}
+ */
