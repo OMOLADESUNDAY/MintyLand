@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Navbar from './Navbar';
 
 const CryptoPayment = () => {
  
@@ -138,13 +139,17 @@ const CryptoPayment = () => {
 	}
     }
   return (
+    <div>
+      <Navbar/>
     <div className='container crptoContainer'>
-        <input type="number" className="input" defaultValue={ethPrice}  placeholder='Amount' required/>
-        <input type="password" className="input" defaultValue={destinationAddress} readOnly placeholder='Destination Address' required/>
-        <button type='submit' className='btn' onClick={()=>paymentHandler()}>pay</button>
-        <div>{transaction}</div>
-        <div>{transactionError}</div>
+    <input type="number" className="input" defaultValue={ethPrice}  placeholder='Amount' required/>
+    <input type="password" className="input" defaultValue={destinationAddress} readOnly placeholder='Destination Address' required/>
+    <button type='submit' className='btn' onClick={()=>paymentHandler()}>pay</button>
+    <div>{transaction}</div>
+    <div>{transactionError}</div>
+</div>
     </div>
+    
   )
 }
 
