@@ -44,7 +44,7 @@ const CryptoPayment = () => {
   
 })
 
-
+ 
  
   const destinationAddress="0x278e109a6c4a2affcce691147e6b6ac05c602676"
   const navigate=useNavigate()
@@ -57,20 +57,18 @@ const CryptoPayment = () => {
     try {
 
 	if (!window.ethereum) {
-    // alert('No crypto wallet found. Please install the metamask browser ')
-    // toast.error('No crypto wallet found. Please install the metamask browser')
 		throw  new  Error("No crypto wallet found. Please install it.");
 	}
 
 		await  window.ethereum.send("eth_requestAccounts");
 
 		const  provider = new  ethers.providers.Web3Provider(window.ethereum);
-    // const network = await provider.getNetwork();
-    // if (network.chainId !== 1) {
-    //   alert('Please switch to the Ethereum mainnet')
-    //   throw new Error('Please switch to the Ethereum mainnet');
-    // }
-    // else{
+    const network = await provider.getNetwork();
+    if (network.chainId !== 1) {
+      alert('Please switch to the Ethereum mainnet')
+      throw new Error('Please switch to the Ethereum mainnet');
+    }
+    else{
       const  signer = provider.getSigner();
 
 		ethers.utils.getAddress(destinationAddress);
@@ -119,7 +117,7 @@ const CryptoPayment = () => {
         alert('there was an error')        
       } 
     }
-    // }
+    }
    
     // usrid,product purchase,transaction response
 	} catch (error) {

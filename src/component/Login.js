@@ -149,7 +149,7 @@ const Login = () => {
                 </Link>
               </span>
             </p>
-            <p>
+            <p style={{textAlign:"center", margin:"1rem"}}>
               <Link className="log" to='/forgotpassword'>forgotten password?</Link>
             </p>
             <small className="success">{success}</small>
