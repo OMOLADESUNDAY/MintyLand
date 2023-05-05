@@ -4,6 +4,10 @@
     height: 0.3rem;
     background-color: var(--text-color);
 }
+.footWrapper{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .footerContainer{
     display: flex;
     justify-content: space-between;

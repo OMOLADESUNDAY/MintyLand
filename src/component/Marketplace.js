@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { toast } from 'react-toastify'
 import { getError } from './utils'
+import Footer from './Footer'
 
 const Explore='Explore >>'
 const Marketplace = () => {
@@ -275,6 +276,7 @@ const Marketplace = () => {
           })}
         </div>
        </article>
+       {loading?<div></div>:<Footer/>}
     </section>
   )
 }

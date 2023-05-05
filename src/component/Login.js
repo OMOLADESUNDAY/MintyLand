@@ -9,6 +9,7 @@ import { Store } from './store';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 const Login = () => {
   const navigate=useNavigate()
   const {search}=useLocation()
@@ -157,6 +158,7 @@ const Login = () => {
           </form>
         </article>
       </section>
+      <Footer/>
     </div>
   );
 }

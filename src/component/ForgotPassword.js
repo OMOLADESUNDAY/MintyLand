@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +51,7 @@ const ForgotPassword = () => {
       
       {/* {successMessage && <p>{successMessage}</p>}
       {errorMessage && <p>{errorMessage}</p>} */}
+      <Footer/>
     </div>
   );
 };

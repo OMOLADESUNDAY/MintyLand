@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import './about.css'
+import Footer from './Footer'
 const About = () => {
   return (
     <div className='container'>
@@ -19,7 +20,7 @@ At Mintyland, we believe that NFTs have the power to revolutionize the art world
 
 Thank you for visiting Mintyland, and we invite you to join us on this exciting journey as we continue to innovate and grow in the world of NFTs!</p>
         </section>
-        
+        <Footer/>
     </div>
   )
 }

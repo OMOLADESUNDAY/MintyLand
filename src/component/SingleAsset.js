@@ -11,6 +11,7 @@ import Frame1 from "../image/Frame 1.jpg"
 import Frame2 from "../image/Frame 2.jpg"
 import Frame3 from "../image/Frame 3.jpg"
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 
 const reducer=(state,action)=>{
   switch (action.type) {
@@ -111,7 +112,7 @@ const SingleAsset = () => {
           <button onClick={AddToCartHandler} className='btn  getSbtn'>Buy</button>
           </div>
       </div>
-        
+        {loading?<div></div>: <Footer/>}
     </section>
   )
 }

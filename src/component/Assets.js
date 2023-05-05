@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Store } from './store'
 import { Link } from 'react-router-dom'
 import { SERVERMACHINE } from './envconfig'
+import Footer from './Footer'
 
 
 
@@ -129,6 +130,7 @@ const Assets = () => {
           })}</div>}
           
         </section>
+        {loading?<div></div>:<Footer/>}
       </div>
     )
   }

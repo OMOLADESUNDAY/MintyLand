@@ -7,7 +7,7 @@ const currentYear = () => {
 }
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="container footWrapper">
       <hr className="horizontalLine" />
       <article className="footerContainer">
         <div className="leftFooter">
@@ -15,7 +15,7 @@ const Footer = () => {
             <Link to="/">Home</Link>
           </p>
           <p>
-            <Link to="/privacy">Privacy</Link>
+            <Link to="/marketplace">Privacy</Link>
           </p>
 
           <p>

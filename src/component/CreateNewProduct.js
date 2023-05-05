@@ -8,6 +8,7 @@
         import { toast } from 'react-toastify';
         import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
         const CreateNewProduct = () => {
           const navigate=useNavigate()
           
@@ -233,6 +234,7 @@ import { SERVERMACHINE } from './envconfig';
                   </form>
                 </article>
               </section>
+              <Footer/>
             </div>
           );
         }

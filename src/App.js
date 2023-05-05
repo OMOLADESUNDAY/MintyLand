@@ -10,7 +10,6 @@ import Login from './component/Login';
 import Signup from './component/Signup';
 
 import { Route, Routes } from "react-router-dom";
-import Footer from './component/Footer';
 import Trending from './component/Trending';
 import LandAndEstate from './component/LandAndEstate';
 import ConnectWallet from './component/ConnectWallet';
@@ -53,7 +52,7 @@ function App() {
         <Route path="/product" element={<Products />} />
         
       </Routes>
-      <Footer/>
+     
     </div>
   );
 }

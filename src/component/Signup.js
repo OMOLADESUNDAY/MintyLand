@@ -8,6 +8,7 @@ import './signup.css'
 import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 const Signup = () => {
   const navigate=useNavigate()
   const [showpassword,setShowPassword]=useState('password')
@@ -167,6 +168,7 @@ const Signup = () => {
           </form>
         </article>
       </section>
+      <Footer/>
     </div>
   );
 }

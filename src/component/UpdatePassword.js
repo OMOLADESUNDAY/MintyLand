@@ -8,6 +8,7 @@ import './signup.css'
 import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 const UpdatePassword = () => {
     const para =useParams();
     const { token } =para;
@@ -128,6 +129,7 @@ const UpdatePassword = () => {
           </form>
         </article>
       </section>
+      <Footer/>
     </div>
   );
 }

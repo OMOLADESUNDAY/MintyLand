@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./products.css"
 import Navbar from "./Navbar";
 import { SERVERMACHINE } from "./envconfig";
+import Footer from "./Footer";
 const Products = () => {
   // sample product data
 //   const products = [
@@ -114,6 +115,8 @@ if(error){
           </button>
         ))}
       </div>
+      {loading?<div></div>:<Footer/>}
+      
     </div>
   );
 };

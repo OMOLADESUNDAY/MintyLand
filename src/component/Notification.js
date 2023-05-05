@@ -6,6 +6,7 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import './notification.css'
 import { SERVERMACHINE } from './envconfig';
+import Footer from './Footer';
 const Notification = () => {
   const {state,dispatch:ctxDispatch}=useContext(Store);
   const {cart:{cartItems}}=state
@@ -68,7 +69,7 @@ const Notification = () => {
                 </article>
             </section>
             }
-       
+            <Footer/>
     </div>
   )
 }

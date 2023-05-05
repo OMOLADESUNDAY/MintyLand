@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import './home.css'
 import { Link } from 'react-router-dom';
 import Image1 from '../image/digital-2.png'
+import Footer from './Footer';
 const Home = () => {
   let image1=Image1
   return (
@@ -78,6 +79,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 }

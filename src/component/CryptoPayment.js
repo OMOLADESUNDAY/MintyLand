@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const CryptoPayment = () => {
  
@@ -146,6 +147,7 @@ const CryptoPayment = () => {
     <div>{transaction}</div>
     <div>{transactionError}</div>
 </div>
+<Footer/>
     </div>
     
   )

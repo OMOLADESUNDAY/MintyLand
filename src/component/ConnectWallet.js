@@ -3,6 +3,7 @@ import {FaWallet} from 'react-icons/fa'
 import './connectwallet.css'
 import Navbar from './Navbar'
 import { useNavigate } from 'react-router-dom'
+import Footer from './Footer'
 const ConnectWallet = () => {
   const navigate =useNavigate()
  
@@ -19,6 +20,7 @@ const ConnectWallet = () => {
         </article>
         
     </section>   
+    <Footer/>
     </React.Fragment>
     
   )

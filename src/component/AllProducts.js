@@ -6,6 +6,7 @@ import { getError } from './utils'
 import "./Allproduct.css"
 import Navbar from './Navbar'
 import { SERVERMACHINE } from './envconfig'
+import Footer from './Footer'
 
 const AllProducts = () => {
   const [loading,setloading]=useState(true)
@@ -66,6 +67,7 @@ const AllProducts = () => {
         )
       })}
     </div>
+    <Footer/>
     </div>
     
   )
