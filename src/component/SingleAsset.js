@@ -108,7 +108,7 @@ const SingleAsset = () => {
             
         </div>
         <div className='lowerdown'>
-          <button onClick={AddToCartHandler} className='btn addtocartbtn'>Buy</button>
+          <button onClick={AddToCartHandler} className='btn  getSbtn'>Buy</button>
           </div>
       </div>
         

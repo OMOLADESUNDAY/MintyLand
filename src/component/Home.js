@@ -55,7 +55,7 @@ const Home = () => {
             <img src={image1} alt="try" />
           </div>
         </div>
-        <div className="right">
+        <div className="right magadded">
           <h2 className="discoverText colorful-text">Trade</h2>
           <h3>Buy & sell LANDs $ Estate From Our Store</h3>
           <h5 className="immerseText">

@@ -93,9 +93,10 @@
         background-color: var(--color-black);
         width: 80%;
         min-height: calc(100vh - 1rem) ;
-        transition: var(--transition);
+        /* transition: var(--transition); */
         z-index: 4;
         margin-bottom: 1rem;
+        transition: 5s ease-in-out;
     }
     .togglerContainer{
         display: block;
@@ -144,6 +145,10 @@
     }
     .rightNavbar li:hover{
           background-color: var(--color-primary);
+    }
+    .canncel{
+        position: absolute;
+        right: 0px;
     }
 }
 @media screen and (max-width:600px) {

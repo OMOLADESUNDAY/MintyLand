@@ -76,7 +76,7 @@ const Navbar = () => {
           className={show ? "togglerContainerChange" : "togglerContainer"}
           onClick={togglerHandler}
         >
-          {show ? <TiTimes style={{fontSize:"2rem"}} /> : <BiMenu style={{fontSize:"2rem"}} />}
+          {show ? <TiTimes style={{fontSize:"2rem",fontWeight:"100"}} className='canncel' /> : <BiMenu style={{fontSize:"2rem"}} />}
         </div>
         <div className={show ? "show navlistContainer" : "navlistContainer"}>
           <div className="leftNavbar">

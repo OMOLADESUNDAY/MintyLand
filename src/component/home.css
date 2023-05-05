@@ -230,6 +230,12 @@
   word-spacing: 0.1rem;
   font-size: 20px;
 }
+.magadded{
+    margin-bottom: 8rem;
+}
+.homeAboutContainer{
+    margin-bottom: 8rem;
+}
 }
 @media screen and (max-width:350px) {
     .mintyText{

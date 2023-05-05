@@ -22,9 +22,8 @@
 }
 .leftSingleProduct{
     width: 300px;
-    /* height: 100%; */
     border-radius: 2rem;
-  
+    margin-bottom: 4rem;
 }
 .leftSingleProduct img{
     width: 100%;
@@ -149,6 +148,7 @@
     .leftSingleProduct{
         width: 95%;
         margin: auto;
+        margin-bottom: 4rem;
     }
     .rightSingleProduct{
         width: 95%;
