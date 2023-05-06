@@ -234,7 +234,8 @@
     margin-bottom: 8rem;
 }
 .homeAboutContainer{
-    margin-bottom: 8rem;
+    margin-top: 8rem;
+    margin-bottom: 16rem;
 }
 }
 @media screen and (max-width:350px) {
