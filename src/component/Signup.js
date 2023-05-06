@@ -1,4 +1,4 @@
-import React, { useRef,useState } from 'react'
+import React, { useEffect, useRef,useState } from 'react'
 import { TiEye } from 'react-icons/ti';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar'
@@ -111,6 +111,13 @@ const Signup = () => {
     }
 
   }
+  const {state,dispatch:ctxDispatch}=useContext(Store)
+  const {userInfo}=state
+  useEffect(()=>{
+    if(userInfo){
+      navigate('/')
+    }
+  })
  
   return (
     <div className="container">
