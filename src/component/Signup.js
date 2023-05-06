@@ -1,4 +1,4 @@
-import React, { useEffect, useRef,useState } from 'react'
+import React, { useContext, useEffect, useRef,useState } from 'react'
 import { TiEye } from 'react-icons/ti';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar'
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { getError } from './utils';
 import { SERVERMACHINE } from './envconfig';
 import Footer from './Footer';
+import { Store } from './store';
 const Signup = () => {
   const navigate=useNavigate()
   const [showpassword,setShowPassword]=useState('password')
@@ -111,7 +112,7 @@ const Signup = () => {
     }
 
   }
-  const {state,dispatch:ctxDispatch}=useContext(Store)
+  const {state}=useContext(Store)
   const {userInfo}=state
   useEffect(()=>{
     if(userInfo){
