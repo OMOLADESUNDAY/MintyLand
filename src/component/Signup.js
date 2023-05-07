@@ -116,7 +116,7 @@ const Signup = () => {
   const {userInfo}=state
   useEffect(()=>{
     if(userInfo){
-      navigate('/')
+      navigate('/marketplace')
     }
   })
  

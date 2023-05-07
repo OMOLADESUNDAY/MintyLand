@@ -64,7 +64,7 @@ const Notification = () => {
                         <h2>Total</h2><p>{leftbracket}{cartItems.reduce((a,c)=>a+c.quantity,0)} items{rightbracket}</p>
                     </div>
                     <h3>price:${cartItems.reduce((a,c)=>a+c.price * c.quantity,0)}</h3>
-                    <button className='btn proceed' disabled={cartItems.quantity===0} onClick={checkoutHandler}>proceed to Checkout</button>
+                    <button className='btn proceed getSbtn' disabled={cartItems.quantity===0} onClick={checkoutHandler}>proceed</button>
                     
                 </article>
             </section>
