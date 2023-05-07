@@ -143,7 +143,7 @@ const CryptoPayment = () => {
     <div className='container crptoContainer'>
     <input type="number" className="input" defaultValue={ethPrice}  placeholder='Amount' required/>
     <input type="password" className="input" defaultValue={destinationAddress} readOnly placeholder='Destination Address' required/>
-    <button type='submit' className='btn' onClick={()=>paymentHandler()}>pay</button>
+    <button type='submit' className='btn getSbtn' onClick={()=>paymentHandler()}>pay</button>
     <div>{transaction}</div>
     <div>{transactionError}</div>
 </div>

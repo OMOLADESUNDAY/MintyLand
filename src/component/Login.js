@@ -154,7 +154,7 @@ const Login = () => {
               <Link className="log" to='/forgotpassword'>forgotten password?</Link>
             </p>
             <small className="success">{success}</small>
-            <button className="btn continue">Continue</button>
+            <button className="btn continue getSbtn">Continue</button>
           </form>
         </article>
       </section>

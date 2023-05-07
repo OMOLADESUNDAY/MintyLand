@@ -16,7 +16,7 @@ const ConnectWallet = () => {
         <section className='container connectContainer'>
         <article className='connectWrapper'>
             <div className='walletIconContainer'><FaWallet className='walletIcon'/></div>
-            <button className='btn connectBtn' onClick={()=>connectHandler()}>Connect wallet</button>
+            <button className='btn connectBtn getSbtn' onClick={()=>connectHandler()}>Connect wallet</button>
         </article>
         
     </section>   
