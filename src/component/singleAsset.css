@@ -145,6 +145,9 @@
     }
   }
   @media screen and (max-width:600px) {
+    .singleProductContainer{
+        margin-bottom: 10rem;
+    }
     .leftSingleProduct{
         width: 95%;
         margin: auto;
