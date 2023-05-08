@@ -64,12 +64,12 @@ const CryptoPayment = () => {
 		await  window.ethereum.send("eth_requestAccounts");
 
 		const  provider = new  ethers.providers.Web3Provider(window.ethereum);
-    const network = await provider.getNetwork();
-    if (network.chainId !== 1) {
-      alert('Please switch to the Ethereum mainnet')
-      throw new Error('Please switch to the Ethereum mainnet');
-    }
-    else{
+    // const network = await provider.getNetwork();
+    // if (network.chainId !== 1) {
+    //   alert('Please switch to the Ethereum mainnet')
+    //   throw new Error('Please switch to the Ethereum mainnet');
+    // }
+    // else{
       const  signer = provider.getSigner();
 
 		ethers.utils.getAddress(destinationAddress);
@@ -118,7 +118,7 @@ const CryptoPayment = () => {
         alert('there was an error')        
       } 
     }
-    }
+    // }
    
     // usrid,product purchase,transaction response
 	} catch (error) {
